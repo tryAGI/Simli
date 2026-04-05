@@ -17,3 +17,16 @@ autosdk generate openapi.yaml \
   --output Generated \
   --exclude-deprecated-operations \
   --security-scheme ApiKey:Header:x-simli-api-key
+
+# Generate WebSocket clients from AsyncAPI spec (2 channels: P2P and LiveKit).
+# The spec defines the WebRTC signaling protocol over WebSocket:
+# - P2P: SDP offer/answer exchange + audio chunks + control signals
+# - LiveKit: LiveKit room join info + audio chunks + control signals
+curl --fail --silent --show-error -L -o asyncapi.yaml https://docs.simli.com/api-reference/asyncapi.yaml
+
+autosdk generate asyncapi.yaml \
+  --namespace Simli.Realtime \
+  --websocket-class-name SimliRealtimeClient \
+  --json-serializer-context RealtimeSourceGenerationContext \
+  --targetFramework net10.0 \
+  --output Generated
