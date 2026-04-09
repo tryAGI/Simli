@@ -5,6 +5,25 @@ namespace Simli
 {
     public partial class SimliClient
     {
+
+
+        private static readonly global::Simli.EndPointSecurityRequirement s_GetHistorySessionsSecurityRequirement0 =
+            new global::Simli.EndPointSecurityRequirement
+            {
+                Authorizations = new global::Simli.EndPointAuthorizationRequirement[]
+                {                    new global::Simli.EndPointAuthorizationRequirement
+                    {
+                        Type = "ApiKey",
+                        Location = "Header",
+                        Name = "x-simli-api-key",
+                        FriendlyName = "ApiKeyInHeader",
+                    },
+                },
+            };
+        private static readonly global::Simli.EndPointSecurityRequirement[] s_GetHistorySessionsSecurityRequirements =
+            new global::Simli.EndPointSecurityRequirement[]
+            {                s_GetHistorySessionsSecurityRequirement0,
+            };
         partial void PrepareGetHistorySessionsArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref int? start,
@@ -47,13 +66,19 @@ namespace Simli
                 start: ref start,
                 end: ref end);
 
+
+            var __authorizations = global::Simli.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_GetHistorySessionsSecurityRequirements,
+                operationName: "GetHistorySessionsAsync");
+
             var __pathBuilder = new global::Simli.PathBuilder(
                 path: "/history/sessions",
                 baseUri: HttpClient.BaseAddress); 
             __pathBuilder
                 .AddOptionalParameter("start", start?.ToString())
                 .AddOptionalParameter("end", end?.ToString()) 
-                ; 
+                ;
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Get,
@@ -63,7 +88,7 @@ namespace Simli
             __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
 
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "Http" ||
                     __authorization.Type == "OAuth2")
