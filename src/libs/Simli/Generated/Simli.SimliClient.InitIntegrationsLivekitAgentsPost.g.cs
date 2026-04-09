@@ -5,6 +5,25 @@ namespace Simli
 {
     public partial class SimliClient
     {
+
+
+        private static readonly global::Simli.EndPointSecurityRequirement s_InitIntegrationsLivekitAgentsPostSecurityRequirement0 =
+            new global::Simli.EndPointSecurityRequirement
+            {
+                Authorizations = new global::Simli.EndPointAuthorizationRequirement[]
+                {                    new global::Simli.EndPointAuthorizationRequirement
+                    {
+                        Type = "ApiKey",
+                        Location = "Header",
+                        Name = "x-simli-api-key",
+                        FriendlyName = "ApiKeyInHeader",
+                    },
+                },
+            };
+        private static readonly global::Simli.EndPointSecurityRequirement[] s_InitIntegrationsLivekitAgentsPostSecurityRequirements =
+            new global::Simli.EndPointSecurityRequirement[]
+            {                s_InitIntegrationsLivekitAgentsPostSecurityRequirement0,
+            };
         partial void PrepareInitIntegrationsLivekitAgentsPostArguments(
             global::System.Net.Http.HttpClient httpClient,
             global::Simli.LiveKitInitializationRequest request);
@@ -40,9 +59,15 @@ namespace Simli
                 httpClient: HttpClient,
                 request: request);
 
+
+            var __authorizations = global::Simli.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_InitIntegrationsLivekitAgentsPostSecurityRequirements,
+                operationName: "InitIntegrationsLivekitAgentsPostAsync");
+
             var __pathBuilder = new global::Simli.PathBuilder(
                 path: "/integrations/livekit/agents",
-                baseUri: HttpClient.BaseAddress); 
+                baseUri: HttpClient.BaseAddress);
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Post,
@@ -52,7 +77,7 @@ namespace Simli
             __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
 
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "Http" ||
                     __authorization.Type == "OAuth2")

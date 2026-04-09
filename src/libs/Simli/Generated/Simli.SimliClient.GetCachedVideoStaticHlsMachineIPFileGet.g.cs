@@ -5,6 +5,25 @@ namespace Simli
 {
     public partial class SimliClient
     {
+
+
+        private static readonly global::Simli.EndPointSecurityRequirement s_GetCachedVideoStaticHlsMachineIPFileGetSecurityRequirement0 =
+            new global::Simli.EndPointSecurityRequirement
+            {
+                Authorizations = new global::Simli.EndPointAuthorizationRequirement[]
+                {                    new global::Simli.EndPointAuthorizationRequirement
+                    {
+                        Type = "ApiKey",
+                        Location = "Header",
+                        Name = "x-simli-api-key",
+                        FriendlyName = "ApiKeyInHeader",
+                    },
+                },
+            };
+        private static readonly global::Simli.EndPointSecurityRequirement[] s_GetCachedVideoStaticHlsMachineIPFileGetSecurityRequirements =
+            new global::Simli.EndPointSecurityRequirement[]
+            {                s_GetCachedVideoStaticHlsMachineIPFileGetSecurityRequirement0,
+            };
         partial void PrepareGetCachedVideoStaticHlsMachineIPFileGetArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string destination,
@@ -43,9 +62,15 @@ namespace Simli
                 destination: ref destination,
                 file: ref file);
 
+
+            var __authorizations = global::Simli.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_GetCachedVideoStaticHlsMachineIPFileGetSecurityRequirements,
+                operationName: "GetCachedVideoStaticHlsMachineIPFileGetAsync");
+
             var __pathBuilder = new global::Simli.PathBuilder(
                 path: $"/static/hls/{destination}/{file}",
-                baseUri: HttpClient.BaseAddress); 
+                baseUri: HttpClient.BaseAddress);
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Get,
@@ -55,7 +80,7 @@ namespace Simli
             __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
 
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "Http" ||
                     __authorization.Type == "OAuth2")

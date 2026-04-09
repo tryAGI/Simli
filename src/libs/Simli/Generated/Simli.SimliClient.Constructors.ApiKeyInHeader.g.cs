@@ -6,6 +6,7 @@ namespace Simli
     public sealed partial class SimliClient
     {
         /// <inheritdoc cref="SimliClient(global::System.Net.Http.HttpClient?, global::System.Uri?, global::System.Collections.Generic.List{global::Simli.EndPointAuthorization}?, bool)"/>
+
         public SimliClient(
             string apiKey,
             global::System.Net.Http.HttpClient? httpClient = null,

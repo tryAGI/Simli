@@ -5,6 +5,25 @@ namespace Simli
 {
     public partial class SimliClient
     {
+
+
+        private static readonly global::Simli.EndPointSecurityRequirement s_EnqueueGSAGenerationFacesGsCreatePostSecurityRequirement0 =
+            new global::Simli.EndPointSecurityRequirement
+            {
+                Authorizations = new global::Simli.EndPointAuthorizationRequirement[]
+                {                    new global::Simli.EndPointAuthorizationRequirement
+                    {
+                        Type = "ApiKey",
+                        Location = "Header",
+                        Name = "x-simli-api-key",
+                        FriendlyName = "ApiKeyInHeader",
+                    },
+                },
+            };
+        private static readonly global::Simli.EndPointSecurityRequirement[] s_EnqueueGSAGenerationFacesGsCreatePostSecurityRequirements =
+            new global::Simli.EndPointSecurityRequirement[]
+            {                s_EnqueueGSAGenerationFacesGsCreatePostSecurityRequirement0,
+            };
         partial void PrepareEnqueueGSAGenerationFacesGsCreatePostArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref global::Simli.TrinityVersion? gsVersion,
@@ -54,13 +73,19 @@ namespace Simli
                 faceName: ref faceName,
                 request: request);
 
+
+            var __authorizations = global::Simli.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_EnqueueGSAGenerationFacesGsCreatePostSecurityRequirements,
+                operationName: "EnqueueGSAGenerationFacesGsCreatePostAsync");
+
             var __pathBuilder = new global::Simli.PathBuilder(
                 path: "/faces/trinity",
                 baseUri: HttpClient.BaseAddress); 
             __pathBuilder
                 .AddOptionalParameter("gsVersion", gsVersion?.ToString())
                 .AddOptionalParameter("face_name", faceName) 
-                ; 
+                ;
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Post,
@@ -70,7 +95,7 @@ namespace Simli
             __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
 
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "Http" ||
                     __authorization.Type == "OAuth2")
