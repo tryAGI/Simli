@@ -14,6 +14,7 @@ namespace Simli
         /// Default Value: untitled_avatar
         /// </param>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Simli.ApiException"></exception>
         global::System.Threading.Tasks.Task<string> EnqueueGSAGenerationFacesGsCreatePostAsync(
@@ -21,6 +22,7 @@ namespace Simli
             global::Simli.BodyEnqueueGSAGenerationFacesGsCreatePost request,
             global::Simli.TrinityVersion? gsVersion = default,
             string? faceName = default,
+            global::Simli.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Generate Trinity Face
@@ -33,6 +35,7 @@ namespace Simli
         /// </param>
         /// <param name="image"></param>
         /// <param name="imagename"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<string> EnqueueGSAGenerationFacesGsCreatePostAsync(
@@ -40,6 +43,7 @@ namespace Simli
             string imagename,
             global::Simli.TrinityVersion? gsVersion = default,
             string? faceName = default,
+            global::Simli.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

@@ -26,6 +26,7 @@ namespace Simli
             Authorizations.Add(new global::Simli.EndPointAuthorization
             {
                 Type = "ApiKey",
+                SchemeId = "ApikeyXSimliApiKey",
                 Location = "Header",
                 Name = "x-simli-api-key",
                 Value = apiKey,
