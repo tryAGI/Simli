@@ -9,11 +9,13 @@ namespace Simli
         /// Create a temporary Simli Compose Session Token
         /// </summary>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Simli.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Simli.StartAudioToVideoSessionComposeTokenPostResponse> StartAudioToVideoSessionComposeTokenPostAsync(
 
             global::Simli.StartStreamingSessionRequest request,
+            global::Simli.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Compose Session Token<br/>
@@ -37,6 +39,7 @@ namespace Simli
         /// <param name="audioInputFormat">
         /// Default Value: pcm16
         /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Simli.StartAudioToVideoSessionComposeTokenPostResponse> StartAudioToVideoSessionComposeTokenPostAsync(
@@ -48,6 +51,7 @@ namespace Simli
             int? maxIdleTime = default,
             int? startFrame = default,
             string? audioInputFormat = default,
+            global::Simli.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }
