@@ -129,8 +129,8 @@ namespace Simli
                 PrepareGetCachedVideoMp4StaticMp4MachineIPFileGetRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    destination: destination,
-                    file: file);
+                    destination: destination!,
+                    file: file!);
 
                 return __httpRequest;
             }
