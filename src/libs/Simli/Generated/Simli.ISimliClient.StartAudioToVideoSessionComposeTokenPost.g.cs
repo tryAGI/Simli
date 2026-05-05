@@ -21,6 +21,19 @@ namespace Simli
         /// Compose Session Token<br/>
         /// Create a temporary Simli Compose Session Token
         /// </summary>
+        /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Simli.ApiException"></exception>
+        global::System.Threading.Tasks.Task<global::Simli.AutoSDKHttpResponse<global::Simli.StartAudioToVideoSessionComposeTokenPostResponse>> StartAudioToVideoSessionComposeTokenPostAsResponseAsync(
+
+            global::Simli.StartStreamingSessionRequest request,
+            global::Simli.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Compose Session Token<br/>
+        /// Create a temporary Simli Compose Session Token
+        /// </summary>
         /// <param name="faceId"></param>
         /// <param name="apiVersion"></param>
         /// <param name="sessionAggregator"></param>
