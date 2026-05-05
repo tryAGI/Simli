@@ -21,6 +21,19 @@ namespace Simli
         /// Generate Static Video<br/>
         /// Generate and stream a static video file from a given audio sample
         /// </summary>
+        /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Simli.ApiException"></exception>
+        global::System.Threading.Tasks.Task<global::Simli.AutoSDKHttpResponse<global::Simli.AudioToVideoInterfaceStaticAudioPostResponse>> AudioToVideoInterfaceStaticAudioPostAsResponseAsync(
+
+            global::Simli.AudioToVideoRequest request,
+            global::Simli.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Generate Static Video<br/>
+        /// Generate and stream a static video file from a given audio sample
+        /// </summary>
         /// <param name="faceId"></param>
         /// <param name="audioBase64"></param>
         /// <param name="audioFormat"></param>
