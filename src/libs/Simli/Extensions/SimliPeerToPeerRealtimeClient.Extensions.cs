@@ -45,7 +45,8 @@ public sealed partial class SimliPeerToPeerRealtimeClient
     {
         ArgumentNullException.ThrowIfNull(sdp);
 
-        var offer = JsonSerializer.Serialize(new { type = "offer", sdp });
+        var escapedSdp = JsonEncodedText.Encode(sdp).ToString();
+        var offer = $$"""{"type":"offer","sdp":"{{escapedSdp}}"}""";
         await SendAsync(offer, cancellationToken).ConfigureAwait(false);
     }
 
