@@ -7,7 +7,7 @@
   <PropertyGroup Label="Nuget">
     <Description>C# SDK for the Simli API -- realtime avatar video generation with WebRTC streaming, face management, and audio-to-video synthesis.</Description>
     <PackageTags>Simli;avatar;realtime;video;webrtc;ai;sdk;dotnet;openapi</PackageTags>
-    <NoWarn>$(NoWarn);CS3002;CS3003;CS1591;CA1822</NoWarn>
+    <NoWarn>$(NoWarn);CS3002;CS3003;CS1591;CA1822;CS0067</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>

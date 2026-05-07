@@ -28,7 +28,7 @@ public sealed partial class SimliLivekitRealtimeClient
         var separator = baseUrl.Contains('?', StringComparison.Ordinal) ? "&" : "?";
         var fullUrl = $"{baseUrl}{separator}session_token={Uri.EscapeDataString(sessionToken)}";
 
-        await ConnectAsync(new Uri(fullUrl), cancellationToken).ConfigureAwait(false);
+        await ConnectAsync(uri: new Uri(fullUrl), cancellationToken: cancellationToken).ConfigureAwait(false);
     }
 
     /// <summary>

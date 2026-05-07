@@ -75,7 +75,7 @@ public sealed class SimliRealtimeAvatarClient : IRealtimeAvatarClient
         try
         {
             var iceResponse = await restClient.GetIceServersComposeIceGetAsync(
-                cancellationToken).ConfigureAwait(false);
+                cancellationToken: cancellationToken).ConfigureAwait(false);
             foreach (var server in iceResponse)
             {
                 if (server.Urls is not { Length: > 0 })
