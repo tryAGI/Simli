@@ -72,5 +72,6 @@ namespace Simli
         public LLMConfig()
         {
         }
+
     }
 }

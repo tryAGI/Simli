@@ -254,5 +254,6 @@ namespace Simli
         public AgentResponse()
         {
         }
+
     }
 }
