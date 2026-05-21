@@ -113,5 +113,6 @@ namespace Simli
         public HistoryRecord()
         {
         }
+
     }
 }

@@ -180,5 +180,6 @@ namespace Simli
         public ConfigurableSessionRequest()
         {
         }
+
     }
 }
