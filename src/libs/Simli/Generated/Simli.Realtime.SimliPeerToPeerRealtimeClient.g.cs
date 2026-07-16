@@ -11,7 +11,7 @@ namespace Simli.Realtime
         /// <summary>
         /// Default WebSocket base URL.
         /// </summary>
-        public const string DefaultBaseUrl = "wss://api.simli.ai/compose/webrtc/p2p";
+        public const string DefaultBaseUrl = "wss://api.simli.ai/compose/webrtc/peer_to_peer";
 
         private global::System.Net.WebSockets.ClientWebSocket _clientWebSocket;
         private global::System.Uri? _lastConnectUri;
@@ -489,7 +489,7 @@ namespace Simli.Realtime
             }
         }
 
-        private const string DefaultBaseUrlTemplate = "wss://api.simli.ai/compose/webrtc/p2p";
+        private const string DefaultBaseUrlTemplate = "wss://api.simli.ai/compose/webrtc/peer_to_peer";
 
 
         /// <inheritdoc cref="global::System.Net.WebSockets.ClientWebSocket.ConnectAsync(global::System.Uri, global::System.Threading.CancellationToken)"/>
