@@ -122,6 +122,7 @@ namespace Simli
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(byte[]))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Simli.CharacterVersion), TypeInfoPropertyName = "CharacterVersion2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Simli.BodyEnqueueGSAGenerationFacesGsCreatePost))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Simli.BodyPreprocessImageFacesTrinityPreprocessPost))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Simli.TrinityVersion), TypeInfoPropertyName = "TrinityVersion2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Simli.GetIceServersComposeIceGetResponseItem>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Simli.GetIceServersComposeIceGetResponseItem))]

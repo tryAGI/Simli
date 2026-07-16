@@ -27,13 +27,13 @@ namespace Simli
             };
         partial void PrepareGetHistorySessionsArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref int? start,
-            ref int? end);
+            ref int? startTime,
+            ref int? endTime);
         partial void PrepareGetHistorySessionsRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            int? start,
-            int? end);
+            int? startTime,
+            int? endTime);
         partial void ProcessGetHistorySessionsResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -47,24 +47,24 @@ namespace Simli
         /// Retrieve session history<br/>
         /// Returns a list of session history records for the authenticated user
         /// </summary>
-        /// <param name="start">
+        /// <param name="startTime">
         /// Example: 1745750387
         /// </param>
-        /// <param name="end">
+        /// <param name="endTime">
         /// Example: 1745750408
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Simli.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Simli.GetHistorySessionsResponse> GetHistorySessionsAsync(
-            int? start = default,
-            int? end = default,
+            int? startTime = default,
+            int? endTime = default,
             global::Simli.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __response = await GetHistorySessionsAsResponseAsync(
-                start: start,
-                end: end,
+                startTime: startTime,
+                endTime: endTime,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
             ).ConfigureAwait(false);
@@ -75,18 +75,18 @@ namespace Simli
         /// Retrieve session history<br/>
         /// Returns a list of session history records for the authenticated user
         /// </summary>
-        /// <param name="start">
+        /// <param name="startTime">
         /// Example: 1745750387
         /// </param>
-        /// <param name="end">
+        /// <param name="endTime">
         /// Example: 1745750408
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Simli.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Simli.AutoSDKHttpResponse<global::Simli.GetHistorySessionsResponse>> GetHistorySessionsAsResponseAsync(
-            int? start = default,
-            int? end = default,
+            int? startTime = default,
+            int? endTime = default,
             global::Simli.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -94,8 +94,8 @@ namespace Simli
                 client: HttpClient);
             PrepareGetHistorySessionsArguments(
                 httpClient: HttpClient,
-                start: ref start,
-                end: ref end);
+                startTime: ref startTime,
+                endTime: ref endTime);
 
 
             var __authorizations = global::Simli.EndPointSecurityResolver.ResolveAuthorizations(
@@ -124,8 +124,8 @@ namespace Simli
                                 path: "/history/sessions",
                                 baseUri: HttpClient.BaseAddress);
                             __pathBuilder
-                                .AddOptionalParameter("start", start?.ToString())
-                                .AddOptionalParameter("end", end?.ToString())
+                                .AddOptionalParameter("startTime", startTime?.ToString())
+                                .AddOptionalParameter("endTime", endTime?.ToString())
                                 ;
                             var __path = __pathBuilder.ToString();
                 __path = global::Simli.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -167,8 +167,8 @@ namespace Simli
                 PrepareGetHistorySessionsRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    start: start,
-                    end: end);
+                    startTime: startTime,
+                    endTime: endTime);
 
                 return __httpRequest;
             }

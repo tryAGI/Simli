@@ -16,10 +16,16 @@ namespace Simli
         public required global::System.Guid Id { get; set; }
 
         /// <summary>
-        /// Firebase user id
+        /// face_id used in session
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("userId")]
-        public string? UserId { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("face_id")]
+        public string? FaceId { get; set; }
+
+        /// <summary>
+        /// Interaction Method
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("kind")]
+        public string? Kind { get; set; }
 
         /// <summary>
         /// (optional) Aggregation identifier provided in request by customer for grouping their end-users
@@ -77,8 +83,11 @@ namespace Simli
         /// <param name="endTime">
         /// Session end time as Unix timestamp
         /// </param>
-        /// <param name="userId">
-        /// Firebase user id
+        /// <param name="faceId">
+        /// face_id used in session
+        /// </param>
+        /// <param name="kind">
+        /// Interaction Method
         /// </param>
         /// <param name="endUserAggregator">
         /// (optional) Aggregation identifier provided in request by customer for grouping their end-users
@@ -94,12 +103,14 @@ namespace Simli
             double sessionTotalTime,
             global::System.DateTimeOffset startTime,
             global::System.DateTimeOffset endTime,
-            string? userId,
+            string? faceId,
+            string? kind,
             string? endUserAggregator,
             string? apiKeyName)
         {
             this.Id = id;
-            this.UserId = userId;
+            this.FaceId = faceId;
+            this.Kind = kind;
             this.EndUserAggregator = endUserAggregator;
             this.ApiKeyName = apiKeyName;
             this.SessionTotalTime = sessionTotalTime;
