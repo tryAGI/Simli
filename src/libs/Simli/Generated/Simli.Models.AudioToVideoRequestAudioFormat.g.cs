@@ -4,28 +4,28 @@
 namespace Simli
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum AudioToVideoRequestAudioFormat
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Mp3,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Ogg,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Pcm16,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Pcm32,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Wav,
     }

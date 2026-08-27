@@ -7,7 +7,7 @@
 namespace Simli.Realtime
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     [global::System.Text.Json.Serialization.JsonSourceGenerationOptions(
         DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull,
@@ -19,12 +19,12 @@ namespace Simli.Realtime
         private static readonly global::System.Text.Json.JsonSerializerOptions DefaultOptions = CreateDefaultOptions();
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static RealtimeSourceGenerationContext Default { get; } = new(DefaultOptions);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public RealtimeSourceGenerationContext()
             : this(DefaultOptions)
@@ -32,7 +32,7 @@ namespace Simli.Realtime
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public RealtimeSourceGenerationContext(global::System.Text.Json.JsonSerializerOptions? options)
             : base(options)

@@ -4,26 +4,26 @@
 namespace Simli
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class LiveKitInitializationRequest
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("session_token")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string SessionToken { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("livekit_token")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string LivekitToken { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("livekit_url")]
         [global::System.Text.Json.Serialization.JsonRequired]

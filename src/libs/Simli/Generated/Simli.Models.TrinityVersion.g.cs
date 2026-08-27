@@ -4,12 +4,12 @@
 namespace Simli
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum TrinityVersion
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Gsa10,
     }

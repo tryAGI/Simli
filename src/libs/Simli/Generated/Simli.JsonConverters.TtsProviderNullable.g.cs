@@ -20,7 +20,7 @@ namespace Simli.JsonConverters
                     {
                         return global::Simli.TtsProviderExtensions.ToEnum(stringValue);
                     }
-                    
+
                     break;
                 }
                 case global::System.Text.Json.JsonTokenType.Number:

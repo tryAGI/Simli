@@ -4,7 +4,7 @@
 namespace Simli
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class ConfigurableSessionRequest
     {
@@ -22,7 +22,7 @@ namespace Simli
         public global::Simli.TtsProvider? TtsProvider { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("ttsAPIKey")]
         public string? TtsAPIKey { get; set; }
@@ -46,7 +46,7 @@ namespace Simli
         public string? SystemPrompt { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("firstMessage")]
         public string? FirstMessage { get; set; }
@@ -70,7 +70,7 @@ namespace Simli
         public string? Language { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("customLLMConfig")]
         public global::Simli.CustomLLMConfig? CustomLLMConfig { get; set; }

@@ -4,26 +4,26 @@
 namespace Simli
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class AudioToVideoRequest
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("faceId")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string FaceId { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("audioBase64")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string AudioBase64 { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("audioFormat")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Simli.JsonConverters.AudioToVideoRequestAudioFormatJsonConverter))]

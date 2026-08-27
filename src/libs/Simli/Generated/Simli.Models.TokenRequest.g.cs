@@ -4,7 +4,7 @@
 namespace Simli
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class TokenRequest
     {
@@ -15,20 +15,20 @@ namespace Simli
         public int? ExpiryStamp { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("simliAPIKey")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string SimliAPIKey { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("llmAPIKey")]
         public string? LlmAPIKey { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("ttsAPIKey")]
         public string? TtsAPIKey { get; set; }
