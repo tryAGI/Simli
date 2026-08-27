@@ -4,12 +4,12 @@
 namespace Simli
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class AgentRequest
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("face_id")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -24,26 +24,26 @@ namespace Simli
         public required string Name { get; set; } = "Untitled Agent";
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("first_message")]
         public string? FirstMessage { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("prompt")]
         public string? Prompt { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("voice_provider")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Simli.JsonConverters.AgentRequestVoiceProviderJsonConverter))]
         public global::Simli.AgentRequestVoiceProvider? VoiceProvider { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("voice_id")]
         public global::System.Guid? VoiceId { get; set; }
@@ -62,13 +62,13 @@ namespace Simli
         public string? OwnerId { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("language")]
         public string? Language { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("emotion")]
         public global::System.Guid? Emotion { get; set; }

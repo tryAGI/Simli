@@ -4,24 +4,24 @@
 namespace Simli
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class GetIceServersComposeIceGetResponseItem
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("urls")]
         public string? Urls { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("username")]
         public string? Username { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("credential")]
         public string? Credential { get; set; }

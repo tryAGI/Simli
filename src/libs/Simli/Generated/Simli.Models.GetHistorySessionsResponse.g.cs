@@ -4,12 +4,12 @@
 namespace Simli
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class GetHistorySessionsResponse
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("sessions")]
         public global::System.Collections.Generic.IList<global::Simli.HistoryRecord>? Sessions { get; set; }

@@ -4,20 +4,20 @@
 namespace Simli
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum GoogleModels
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Gemini25Flash,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Gemini25FlashLitePreview0617,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Gemini25Pro,
     }

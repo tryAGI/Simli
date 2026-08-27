@@ -4,20 +4,20 @@
 namespace Simli
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum LlmProvider
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Google,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         OpenAI,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         User,
     }

@@ -4,26 +4,26 @@
 namespace Simli
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class CustomLLMConfig
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string Model { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("baseURL")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string BaseURL { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("llmAPIKey")]
         [global::System.Text.Json.Serialization.JsonRequired]

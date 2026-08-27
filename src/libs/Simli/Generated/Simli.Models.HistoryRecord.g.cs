@@ -4,7 +4,7 @@
 namespace Simli
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class HistoryRecord
     {

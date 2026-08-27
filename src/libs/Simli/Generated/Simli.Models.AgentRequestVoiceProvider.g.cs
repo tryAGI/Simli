@@ -4,16 +4,16 @@
 namespace Simli
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum AgentRequestVoiceProvider
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Cartesia,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Elevenlabs,
     }

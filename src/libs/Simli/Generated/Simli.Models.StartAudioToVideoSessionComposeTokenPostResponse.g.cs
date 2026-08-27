@@ -4,12 +4,12 @@
 namespace Simli
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class StartAudioToVideoSessionComposeTokenPostResponse
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("session_token")]
         public string? SessionToken { get; set; }

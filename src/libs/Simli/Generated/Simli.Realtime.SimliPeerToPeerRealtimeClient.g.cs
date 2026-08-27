@@ -4,7 +4,7 @@
 namespace Simli.Realtime
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class SimliPeerToPeerRealtimeClient : global::System.IDisposable, global::System.IAsyncDisposable
     {
@@ -261,7 +261,7 @@ namespace Simli.Realtime
         public event global::System.EventHandler<AutoSDKWebSocketUnknownMessageEventArgs>? UnknownMessage;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 
         public global::System.Text.Json.Serialization.JsonSerializerContext JsonSerializerContext { get; set; } = global::Simli.Realtime.RealtimeSourceGenerationContext.Default;

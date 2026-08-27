@@ -4,24 +4,24 @@
 namespace Simli
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum TtsProvider
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Cartesia,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ElevenLabs,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         PlayHT,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         User,
     }

@@ -9,15 +9,15 @@ namespace Simli
     public enum AgentUpdateLlmProvider
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Google,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Openai,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         User,
     }

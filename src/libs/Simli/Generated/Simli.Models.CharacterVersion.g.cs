@@ -4,12 +4,12 @@
 namespace Simli
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum CharacterVersion
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x15,
     }

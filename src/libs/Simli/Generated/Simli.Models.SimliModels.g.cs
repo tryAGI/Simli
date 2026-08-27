@@ -4,16 +4,16 @@
 namespace Simli
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum SimliModels
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Artalk,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Fasttalk,
     }
