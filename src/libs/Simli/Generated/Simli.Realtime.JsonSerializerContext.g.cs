@@ -54,7 +54,6 @@ namespace Simli.Realtime
             {
                 DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull,
             };
-
             return options;
         }
     }
