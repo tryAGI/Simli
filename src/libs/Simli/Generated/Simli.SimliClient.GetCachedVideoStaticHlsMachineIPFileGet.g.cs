@@ -155,8 +155,8 @@ namespace Simli
                 PrepareGetCachedVideoStaticHlsMachineIPFileGetRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    destination: destination!,
-                    file: file!);
+                    destination: destination,
+                    file: file);
 
                 return __httpRequest;
             }
@@ -178,7 +178,7 @@ namespace Simli
                                 pathTemplate: "$\"/static/hls/{destination}/{file}\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: null,
                                 exception: null,
                                 clientOptions: Options,
@@ -212,7 +212,7 @@ namespace Simli
                                 pathTemplate: "$\"/static/hls/{destination}/{file}\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: null,
                                 exception: __exception,
                                 clientOptions: Options,
@@ -253,7 +253,7 @@ namespace Simli
                                 pathTemplate: "$\"/static/hls/{destination}/{file}\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
@@ -301,7 +301,7 @@ namespace Simli
                                 pathTemplate: "$\"/static/hls/{destination}/{file}\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
@@ -323,7 +323,7 @@ namespace Simli
                                 pathTemplate: "$\"/static/hls/{destination}/{file}\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
@@ -543,8 +543,8 @@ namespace Simli
                 PrepareGetCachedVideoStaticHlsMachineIPFileGetRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    destination: destination!,
-                    file: file!);
+                    destination: destination,
+                    file: file);
 
                 return __httpRequest;
             }
@@ -566,7 +566,7 @@ namespace Simli
                                 pathTemplate: "$\"/static/hls/{destination}/{file}\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: null,
                                 exception: null,
                                 clientOptions: Options,
@@ -600,7 +600,7 @@ namespace Simli
                                 pathTemplate: "$\"/static/hls/{destination}/{file}\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: null,
                                 exception: __exception,
                                 clientOptions: Options,
@@ -641,7 +641,7 @@ namespace Simli
                                 pathTemplate: "$\"/static/hls/{destination}/{file}\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
@@ -689,7 +689,7 @@ namespace Simli
                                 pathTemplate: "$\"/static/hls/{destination}/{file}\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
@@ -711,7 +711,7 @@ namespace Simli
                                 pathTemplate: "$\"/static/hls/{destination}/{file}\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
