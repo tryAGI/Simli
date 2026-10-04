@@ -12,7 +12,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.AI.Abstractions" Version="10.10.1" />
-    <PackageReference Include="SIPSorcery" Version="10.0.16" PrivateAssets="all" />
+    <PackageReference Include="SIPSorcery" Version="10.0.17" PrivateAssets="all" />
   </ItemGroup>
 
 </Project>
