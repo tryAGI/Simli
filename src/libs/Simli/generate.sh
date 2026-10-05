@@ -35,6 +35,12 @@ autosdk generate openapi.yaml \
 # - LiveKit: LiveKit room join info + audio chunks + control signals
 fetch_spec --fail --silent --show-error -L -o asyncapi.yaml https://docs.simli.com/api-reference/asyncapi.yaml
 
+# Simli's current official clients use /compose/webrtc/p2p while the published
+# AsyncAPI document still advertises the retired /compose/webrtc/peer_to_peer path.
+# Keep this workaround next to generation so regenerated clients stay usable.
+sed -i.bak 's#/compose/webrtc/peer_to_peer#/compose/webrtc/p2p#g' asyncapi.yaml
+rm asyncapi.yaml.bak
+
 autosdk generate asyncapi.yaml \
   --namespace Simli.Realtime \
   --websocket-class-name SimliRealtimeClient \

@@ -18,9 +18,12 @@ public partial class Tests
         //// Get available faces first
         var faces = await client.GetFacesAsync();
         faces.Should().NotBeNull();
-        faces.Count.Should().BeGreaterThan(0, "at least one face is required");
 
-        var faceId = faces[0].Id.ToString();
+        var faceId =
+            Environment.GetEnvironmentVariable("SIMLI_FACE_ID") is { Length: > 0 } configuredFaceId
+                ? configuredFaceId
+                : faces.FirstOrDefault()?.Id.ToString()
+                    ?? throw new AssertInconclusiveException("SIMLI_FACE_ID is required when the account has no custom faces.");
 
         //// Create a Compose session token for realtime avatar streaming
         var response = await client.StartAudioToVideoSessionComposeTokenPostAsync(
@@ -28,6 +31,5 @@ public partial class Tests
 
         response.Should().NotBeNull();
         response.SessionToken.Should().NotBeNullOrEmpty();
-        Console.WriteLine($"Session token: {response.SessionToken}");
     }
 }

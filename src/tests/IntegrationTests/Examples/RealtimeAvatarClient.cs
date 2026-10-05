@@ -38,12 +38,20 @@ public partial class Tests
         Func<Task> sendText = () => avatar.SendTextAsync("test");
         await sendText.Should().ThrowAsync<NotSupportedException>();
 
-        //// Send a short PCM16 audio chunk (silence)
-        var silentAudio = new byte[3200]; // 100ms of silence at 16kHz mono PCM16
+        //// ConnectAsync only returns after authenticated ICE/DTLS media establishment.
+        avatar.IsConnected.Should().BeTrue();
+
+        //// Bootstrap Simli output with a short PCM16 silence chunk.
+        var silentAudio = new byte[6000];
         await avatar.SendAudioAsync(silentAudio);
 
-        //// The connection should be established
-        // Note: IsConnected checks both WebSocket and WebRTC state
-        // WebRTC may take a moment to establish
+        //// Require actual authenticated media from the real provider.
+        using var mediaTimeout = new CancellationTokenSource(TimeSpan.FromSeconds(15));
+        var audioFrame = await avatar.ReceiveAudioFramesAsync(mediaTimeout.Token).FirstAsync(mediaTimeout.Token);
+        audioFrame.Data.Should().NotBeEmpty();
+        audioFrame.Codec.Should().Be("OPUS");
+
+        var videoFrame = await avatar.ReceiveVideoFramesAsync(mediaTimeout.Token).FirstAsync(mediaTimeout.Token);
+        videoFrame.Data.Should().NotBeEmpty();
     }
 }

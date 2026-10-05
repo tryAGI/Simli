@@ -3,25 +3,26 @@
 #pragma warning disable CS3003 // Type is not CLS-compliant
 #pragma warning disable CA1819 // Properties should not return arrays
 #pragma warning disable CA1031 // Do not catch general exception types
+#pragma warning disable CA2000 // Ownership is transferred to the returned adapter
 
 using System.Net;
+using System.Net.Sockets;
 using System.Runtime.CompilerServices;
 using System.Threading.Channels;
 using Simli.Realtime;
-using SIPSorcery.Net;
-using SIPSorceryMedia.Abstractions;
 using tryAGI.RealtimeAvatar;
+using tryAGI.WebRTC;
 
 namespace Simli;
 
 /// <summary>
-/// Adapter wrapping <see cref="SimliPeerToPeerRealtimeClient"/> with SIPSorcery WebRTC
+/// Adapter wrapping <see cref="SimliPeerToPeerRealtimeClient"/> with tryAGI.WebRTC
 /// to implement <see cref="IRealtimeAvatarClient"/> with full video/audio frame delivery.
 /// </summary>
 public sealed class SimliRealtimeAvatarClient : IRealtimeAvatarClient
 {
     private readonly SimliPeerToPeerRealtimeClient _wsClient;
-    private readonly RTCPeerConnection _peerConnection;
+    private readonly PeerConnection _peerConnection;
     private readonly Channel<AvatarVideoFrame> _videoFrames = Channel.CreateBounded<AvatarVideoFrame>(
         new BoundedChannelOptions(128)
         {
@@ -40,7 +41,7 @@ public sealed class SimliRealtimeAvatarClient : IRealtimeAvatarClient
 
     private SimliRealtimeAvatarClient(
         SimliPeerToPeerRealtimeClient wsClient,
-        RTCPeerConnection peerConnection)
+        PeerConnection peerConnection)
     {
         _wsClient = wsClient;
         _peerConnection = peerConnection;
@@ -70,35 +71,23 @@ public sealed class SimliRealtimeAvatarClient : IRealtimeAvatarClient
         var sessionToken = tokenResponse.SessionToken
             ?? throw new InvalidOperationException("No session token returned.");
 
-        // 2. Get ICE servers from REST API
-        var iceServers = new List<RTCIceServer>();
-        try
+        // 2. Create the owned WebRTC transport on the interface used for Internet traffic.
+        using var routeProbe = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
+        routeProbe.Connect(new IPEndPoint(IPAddress.Parse("1.1.1.1"), 53));
+        var localAddress = ((IPEndPoint)routeProbe.LocalEndPoint!).Address;
+        var pc = new PeerConnection(new PeerConnectionOptions
         {
-            var iceResponse = await restClient.GetIceServersComposeIceGetAsync(
-                cancellationToken: cancellationToken).ConfigureAwait(false);
-            foreach (var server in iceResponse)
-            {
-                if (server.Urls is not { Length: > 0 })
-                {
-                    continue;
-                }
-
-                iceServers.Add(new RTCIceServer
-                {
-                    urls = server.Urls,
-                    username = server.Username,
-                    credential = server.Credential,
-                });
-            }
-        }
-        catch
-        {
-            // ICE server fetch is optional -- STUN/TURN may not be needed for direct connections
-        }
-
-        // 3. Create WebRTC peer connection
-        var config = new RTCConfiguration { iceServers = iceServers };
-        var pc = new RTCPeerConnection(config);
+            LocalEndPoint = new IPEndPoint(localAddress, 0),
+            DataChannels = false,
+            AudioDirection = SdpDirection.ReceiveOnly,
+            VideoDirection = SdpDirection.ReceiveOnly,
+            VideoCodecs =
+            [
+                // Prefer one deterministic hardware-decodable format. Simli otherwise
+                // answers with every offered codec, while this transport selects one.
+                new() { Codec = VideoCodec.H264, PayloadType = 102, H264ProfileLevelId = "42e01f", H264PacketizationMode = 1, H264LevelAsymmetryAllowed = true },
+            ],
+        });
 
         // 4. Create WebSocket client and connect
         var wsClient = new SimliPeerToPeerRealtimeClient();
@@ -107,26 +96,15 @@ public sealed class SimliRealtimeAvatarClient : IRealtimeAvatarClient
 
         var session = new SimliRealtimeAvatarClient(wsClient, pc);
 
-        // 5. Wire up video frame receiver
-        pc.OnVideoFrameReceived += (IPEndPoint _, uint timestamp, byte[] encodedData, VideoFormat format) =>
-        {
-            session._videoFrames.Writer.TryWrite(new AvatarVideoFrame(
-                encodedData, format.FormatName ?? "H264", timestamp));
-        };
+        // 5. Drain authenticated encoded media into the public avatar queues.
+        _ = PumpMediaAsync(session, pc, cancellationToken);
 
-        // 6. Wire up audio frame receiver
-        pc.OnAudioFrameReceived += (EncodedAudioFrame frame) =>
-        {
-            session._audioFrames.Writer.TryWrite(new AvatarAudioFrame(
-                frame.EncodedAudio, frame.AudioFormat.FormatName ?? "OPUS", frame.DurationMilliSeconds));
-        };
+        // 6. Create SDP offer and send via WebSocket.
+        var offer = pc.CreateOffer();
+        await wsClient.SendOfferAsync(offer, cancellationToken).ConfigureAwait(false);
 
-        // 7. Create SDP offer and send via WebSocket
-        var offer = pc.createOffer();
-        await pc.setLocalDescription(offer).ConfigureAwait(false);
-        await wsClient.SendOfferAsync(offer.sdp, cancellationToken).ConfigureAwait(false);
-
-        // 8. Listen for SDP answer from WebSocket events (background task)
+        // 7. Keep signaling alive, but do not report a connected adapter until WebRTC is established.
+        var connected = new TaskCompletionSource<bool>(TaskCreationOptions.RunContinuationsAsynchronously);
         _ = Task.Run(async () =>
         {
             try
@@ -135,27 +113,64 @@ public sealed class SimliRealtimeAvatarClient : IRealtimeAvatarClient
                 {
                     if (evt.Type == SimliServerEventType.Answer && evt.Sdp is not null)
                     {
-                        var remoteAnswer = new RTCSessionDescriptionInit
+                        try
                         {
-                            type = RTCSdpType.answer,
-                            sdp = evt.Sdp,
-                        };
-                        pc.setRemoteDescription(remoteAnswer);
+                            pc.SetRemoteAnswer(evt.Sdp);
+                        }
+                        catch (FormatException exception)
+                        {
+                            var shape = string.Join(',', evt.Sdp.Split('\n').Select(line =>
+                            {
+                                var trimmed = line.TrimEnd('\r');
+                                if (trimmed.StartsWith("a=", StringComparison.Ordinal))
+                                {
+                                    var colon = trimmed.IndexOf(':', StringComparison.Ordinal);
+                                    return colon < 0 ? trimmed : trimmed[..colon];
+                                }
+                                if (trimmed.StartsWith("m=", StringComparison.Ordinal))
+                                {
+                                    var space = trimmed.IndexOf(' ', StringComparison.Ordinal);
+                                    return space < 0 ? trimmed : trimmed[..space];
+                                }
+                                return trimmed.Length >= 2 ? trimmed[..2] : trimmed;
+                            }));
+                            throw new FormatException($"Unsupported Simli SDP shape: {shape}", exception);
+                        }
+                        catch (InvalidOperationException exception)
+                        {
+                            var parsed = SdpSessionDescription.Parse(evt.Sdp);
+                            var shape = $"bundle={string.Join(',', parsed.BundleMids)};" + string.Join(';', parsed.Media.Select(media =>
+                                $"{media.Kind}:{media.Mid}[{string.Join(',', media.Formats)}]/{media.Direction}/{media.Setup}/" +
+                                $"ext={string.Join(',', media.HeaderExtensions.Select(x => $"{x.Key}:{x.Value}"))}/" +
+                                string.Join(',', media.Codecs.Select(codec => $"{codec.PayloadType}:{codec.Name}/{codec.ClockRate}/{codec.Channels}:{codec.FormatParameters}"))));
+                            throw new InvalidOperationException($"Unsupported Simli SDP negotiation: {shape}", exception);
+                        }
+                        await pc.ConnectAsync(cancellationToken).ConfigureAwait(false);
+                        connected.TrySetResult(true);
                     }
                 }
             }
-            catch
+            catch (Exception exception)
             {
-                // Connection closed or cancelled
+                connected.TrySetException(exception);
             }
         }, cancellationToken);
 
-        return session;
+        try
+        {
+            await connected.Task.WaitAsync(TimeSpan.FromSeconds(30), cancellationToken).ConfigureAwait(false);
+            return session;
+        }
+        catch
+        {
+            await session.DisposeAsync().ConfigureAwait(false);
+            throw;
+        }
     }
 
     /// <inheritdoc />
     public bool IsConnected => _wsClient.IsConnected &&
-        _peerConnection.iceConnectionState == RTCIceConnectionState.connected;
+        _peerConnection.State == PeerConnectionState.Connected;
 
     /// <inheritdoc />
     public Task SendTextAsync(string text, CancellationToken cancellationToken = default)
@@ -194,14 +209,36 @@ public sealed class SimliRealtimeAvatarClient : IRealtimeAvatarClient
         }
     }
 
+    private static async Task PumpMediaAsync(
+        SimliRealtimeAvatarClient session,
+        PeerConnection peer,
+        CancellationToken cancellationToken)
+    {
+        var audio = Task.Run(async () =>
+        {
+            await foreach (var packet in peer.ReceiveAudioAsync(cancellationToken).ConfigureAwait(false))
+            {
+                session._audioFrames.Writer.TryWrite(new AvatarAudioFrame(packet.Payload, "OPUS", 20));
+            }
+        }, cancellationToken);
+        var video = Task.Run(async () =>
+        {
+            await foreach (var frame in peer.ReceiveVideoAsync(cancellationToken).ConfigureAwait(false))
+            {
+                session._videoFrames.Writer.TryWrite(new AvatarVideoFrame(
+                    frame.Payload, frame.Codec.ToString().ToUpperInvariant(), frame.Timestamp));
+            }
+        }, cancellationToken);
+        await Task.WhenAll(audio, video).ConfigureAwait(false);
+    }
+
     /// <inheritdoc />
     public async ValueTask DisposeAsync()
     {
         if (_disposed) return;
         _disposed = true;
 
-        _peerConnection.close();
-        _peerConnection.Dispose();
+        await _peerConnection.DisposeAsync().ConfigureAwait(false);
         _videoFrames.Writer.TryComplete();
         _audioFrames.Writer.TryComplete();
 
