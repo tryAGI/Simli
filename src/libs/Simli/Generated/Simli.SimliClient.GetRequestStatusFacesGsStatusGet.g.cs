@@ -42,13 +42,14 @@ namespace Simli
             ref string content);
 
         /// <summary>
-        /// Check Trinity Generation Status
+        /// Check Trinity Generation Status<br/>
+        /// Status of the caller's Trinity generations. `generations` lists every one still tracked, oldest first; the top-level status, queue_position and face_id describe the most recent of them. Accounts that generate in parallel should read `generations` - the top-level fields only ever describe one of several in flight.
         /// </summary>
         /// <param name="faceId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Simli.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<string> GetRequestStatusFacesGsStatusGetAsync(
+        public async global::System.Threading.Tasks.Task<global::Simli.TrinityGenerationStatus> GetRequestStatusFacesGsStatusGetAsync(
             string? faceId = default,
             global::Simli.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -62,13 +63,14 @@ namespace Simli
             return __response.Body;
         }
         /// <summary>
-        /// Check Trinity Generation Status
+        /// Check Trinity Generation Status<br/>
+        /// Status of the caller's Trinity generations. `generations` lists every one still tracked, oldest first; the top-level status, queue_position and face_id describe the most recent of them. Accounts that generate in parallel should read `generations` - the top-level fields only ever describe one of several in flight.
         /// </summary>
         /// <param name="faceId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Simli.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Simli.AutoSDKHttpResponse<string>> GetRequestStatusFacesGsStatusGetAsResponseAsync(
+        public async global::System.Threading.Tasks.Task<global::Simli.AutoSDKHttpResponse<global::Simli.TrinityGenerationStatus>> GetRequestStatusFacesGsStatusGetAsResponseAsync(
             string? faceId = default,
             global::Simli.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -386,11 +388,13 @@ namespace Simli
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    return new global::Simli.AutoSDKHttpResponse<string>(
+                                    var __value = global::Simli.TrinityGenerationStatus.FromJson(__content, JsonSerializerContext) ??
+                                        throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
+                                    return new global::Simli.AutoSDKHttpResponse<global::Simli.TrinityGenerationStatus>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Simli.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
-                                        body: __content);
+                                        body: __value);
                                 }
                                 catch (global::System.Exception __ex)
                                 {
@@ -410,17 +414,19 @@ namespace Simli
                                 try
                                 {
                                     __response.EnsureSuccessStatusCode();
-                                    var __content = await __response.Content.ReadAsStringAsync(
+                                    using var __content = await __response.Content.ReadAsStreamAsync(
                 #if NET5_0_OR_GREATER
                                         __effectiveCancellationToken
                 #endif
                                     ).ConfigureAwait(false);
 
-                                    return new global::Simli.AutoSDKHttpResponse<string>(
+                                    var __value = await global::Simli.TrinityGenerationStatus.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                        throw new global::System.InvalidOperationException("Response deserialization failed.");
+                                    return new global::Simli.AutoSDKHttpResponse<global::Simli.TrinityGenerationStatus>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Simli.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
-                                        body: __content);
+                                        body: __value);
                                 }
                                 catch (global::System.Exception __ex)
                                 {

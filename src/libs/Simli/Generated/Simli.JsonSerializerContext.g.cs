@@ -47,6 +47,10 @@ namespace Simli
 
             typeof(global::Simli.JsonConverters.LlmProviderNullableJsonConverter),
 
+            typeof(global::Simli.JsonConverters.AnimationIdJsonConverter),
+
+            typeof(global::Simli.JsonConverters.AnimationIdNullableJsonConverter),
+
             typeof(global::Simli.JsonConverters.OpenAIModelsJsonConverter),
 
             typeof(global::Simli.JsonConverters.OpenAIModelsNullableJsonConverter),
@@ -62,6 +66,10 @@ namespace Simli
             typeof(global::Simli.JsonConverters.CharacterVersionJsonConverter),
 
             typeof(global::Simli.JsonConverters.CharacterVersionNullableJsonConverter),
+
+            typeof(global::Simli.JsonConverters.TrinityGenerationStateJsonConverter),
+
+            typeof(global::Simli.JsonConverters.TrinityGenerationStateNullableJsonConverter),
 
             typeof(global::Simli.JsonConverters.TrinityVersionJsonConverter),
 
@@ -93,12 +101,15 @@ namespace Simli
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Simli.AgentUpdateLlmProvider), TypeInfoPropertyName = "AgentUpdateLlmProvider2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Simli.AudioToVideoRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Simli.AudioToVideoRequestAudioFormat), TypeInfoPropertyName = "AudioToVideoRequestAudioFormat2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(bool))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(double))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Simli.CameraSetting))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(object))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Simli.ConfigurableSessionRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Simli.TtsProvider), TypeInfoPropertyName = "TtsProvider2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(object))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Simli.AnimationId), TypeInfoPropertyName = "AnimationId2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Simli.CustomLLMConfig))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Simli.LLMConfig))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(bool))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Simli.SimliModels), TypeInfoPropertyName = "SimliModels2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Simli.GoogleModels), TypeInfoPropertyName = "GoogleModels2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Simli.HTTPValidationError))]
@@ -109,13 +120,12 @@ namespace Simli
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Simli.LlmProvider), TypeInfoPropertyName = "LlmProvider2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Simli.LiveKitInitializationRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Simli.SessionDetails))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<string>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Simli.StartStreamingSessionRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Simli.TokenRequest))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<string>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Simli.AnyOf<string, int?>>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Simli.AnyOf<string, int?>), TypeInfoPropertyName = "AnyOfStringInt322")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Simli.HistoryRecord))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(double))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.DateTimeOffset))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Simli.Error))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Simli.BodyGenerateFaceIDAPIFacesLegacyCreatePost))]
@@ -123,21 +133,29 @@ namespace Simli
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Simli.CharacterVersion), TypeInfoPropertyName = "CharacterVersion2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Simli.BodyEnqueueGSAGenerationFacesGsCreatePost))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Simli.BodyPreprocessImageFacesTrinityPreprocessPost))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Simli.TrinityGenerationState), TypeInfoPropertyName = "TrinityGenerationState2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Simli.TrinityGeneration))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Simli.TrinityGenerationStatus))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Simli.TrinityGeneration>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Simli.TrinityVersion), TypeInfoPropertyName = "TrinityVersion2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(float))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Simli.GetIceServersComposeIceGetResponseItem>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Simli.GetIceServersComposeIceGetResponseItem))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Simli.StartAudioToVideoSessionComposeTokenPostResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Simli.StartAudioToVideoSessionComposeTokenPostResponse2))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Simli.AudioToVideoInterfaceStaticAudioPostResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Simli.EnqueueGSAGenerationFacesGsCreatePostResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Simli.FacesResponse>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Simli.InitIntegrationsLivekitAgentsPostResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Simli.GetHistorySessionsResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Simli.HistoryRecord>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Simli.GetRatelimiterSessionsResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Simli.AgentResponse>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Simli.CreatePipecatSessionTokenAutoTokenPostResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Simli.ValidationError>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<string>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Simli.AnyOf<string, int?>>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Simli.TrinityGeneration>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Simli.GetIceServersComposeIceGetResponseItem>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Simli.FacesResponse>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Simli.HistoryRecord>))]

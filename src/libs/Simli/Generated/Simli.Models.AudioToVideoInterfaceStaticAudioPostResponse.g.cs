@@ -23,6 +23,12 @@ namespace Simli
         public string? Mp4Url { get; set; }
 
         /// <summary>
+        /// Camera fields outside their supported range. The video is made with them regardless.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("warnings")]
+        public global::System.Collections.Generic.IList<string>? Warnings { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -37,15 +43,20 @@ namespace Simli
         /// <param name="mp4Url">
         /// Example: https://api.simli.ai/mp4/path-to-file/output.mp4
         /// </param>
+        /// <param name="warnings">
+        /// Camera fields outside their supported range. The video is made with them regardless.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public AudioToVideoInterfaceStaticAudioPostResponse(
             string? hlsUrl,
-            string? mp4Url)
+            string? mp4Url,
+            global::System.Collections.Generic.IList<string>? warnings)
         {
             this.HlsUrl = hlsUrl;
             this.Mp4Url = mp4Url;
+            this.Warnings = warnings;
         }
 
         /// <summary>

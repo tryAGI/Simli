@@ -9,7 +9,7 @@ namespace Simli
     public sealed partial class LLMConfig
     {
         /// <summary>
-        /// Default Value: gpt-4o-mini
+        /// Default Value: gpt-6-luna
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Simli.JsonConverters.AnyOfJsonConverter<global::Simli.OpenAIModels?, global::Simli.GoogleModels?, string>))]
@@ -44,7 +44,7 @@ namespace Simli
         /// Initializes a new instance of the <see cref="LLMConfig" /> class.
         /// </summary>
         /// <param name="model">
-        /// Default Value: gpt-4o-mini
+        /// Default Value: gpt-6-luna
         /// </param>
         /// <param name="provider">
         /// Default Value: OpenAI

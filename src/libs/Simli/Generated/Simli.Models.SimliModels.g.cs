@@ -11,10 +11,6 @@ namespace Simli
         /// <summary>
         ///
         /// </summary>
-        Artalk,
-        /// <summary>
-        ///
-        /// </summary>
         Fasttalk,
     }
 
@@ -30,7 +26,6 @@ namespace Simli
         {
             return value switch
             {
-                SimliModels.Artalk => "artalk",
                 SimliModels.Fasttalk => "fasttalk",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
@@ -42,7 +37,6 @@ namespace Simli
         {
             return value switch
             {
-                "artalk" => SimliModels.Artalk,
                 "fasttalk" => SimliModels.Fasttalk,
                 _ => null,
             };

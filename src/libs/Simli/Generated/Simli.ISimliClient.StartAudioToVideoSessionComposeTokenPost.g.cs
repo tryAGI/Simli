@@ -35,7 +35,9 @@ namespace Simli
         /// Create a temporary Simli Compose Session Token
         /// </summary>
         /// <param name="faceId"></param>
-        /// <param name="apiVersion"></param>
+        /// <param name="apiVersion">
+        /// Default Value: v2
+        /// </param>
         /// <param name="sessionAggregator"></param>
         /// <param name="handleSilence">
         /// Default Value: true
@@ -52,6 +54,25 @@ namespace Simli
         /// <param name="audioInputFormat">
         /// Default Value: pcm16
         /// </param>
+        /// <param name="streamingWidth">
+        /// Width of the streamed video in pixels, Trinity-2 faces only (the others keep their own frame size). At least 512, and with streaming_height one of 1:1, 16:9 or 9:16, otherwise a 422. A canvas larger than the avatar's frame is padded with its background; a smaller one crops a window out of it.<br/>
+        /// Default Value: 768
+        /// </param>
+        /// <param name="streamingHeight">
+        /// Height of the streamed video in pixels. See streaming_width.<br/>
+        /// Default Value: 768
+        /// </param>
+        /// <param name="avatarPositionX">
+        /// Where the avatar sits across the canvas, from 0 (left) to 1 (right). Trinity-2 only.<br/>
+        /// Default Value: 0.5
+        /// </param>
+        /// <param name="avatarPositionY">
+        /// Where the avatar sits down the canvas, from 0 (top) to 1 (bottom). Trinity-2 only.<br/>
+        /// Default Value: 1.0
+        /// </param>
+        /// <param name="camera">
+        /// The camera the session starts with, on top of the avatar's own framing. Trinity-2 only. Leave it out to keep the avatar's framing. A streaming session can move it afterwards with CAM_ messages.
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
@@ -64,6 +85,11 @@ namespace Simli
             int? maxIdleTime = default,
             int? startFrame = default,
             string? audioInputFormat = default,
+            int? streamingWidth = default,
+            int? streamingHeight = default,
+            double? avatarPositionX = default,
+            double? avatarPositionY = default,
+            global::Simli.CameraSetting? camera = default,
             global::Simli.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

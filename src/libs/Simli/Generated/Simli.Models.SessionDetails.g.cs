@@ -23,6 +23,12 @@ namespace Simli
         public required string SessionId { get; set; }
 
         /// <summary>
+        /// Deprecations, and starting camera fields outside their supported range. The session starts regardless.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("warnings")]
+        public global::System.Collections.Generic.IList<string>? Warnings { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -33,15 +39,20 @@ namespace Simli
         /// </summary>
         /// <param name="roomUrl"></param>
         /// <param name="sessionId"></param>
+        /// <param name="warnings">
+        /// Deprecations, and starting camera fields outside their supported range. The session starts regardless.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public SessionDetails(
             string roomUrl,
-            string sessionId)
+            string sessionId,
+            global::System.Collections.Generic.IList<string>? warnings)
         {
             this.RoomUrl = roomUrl ?? throw new global::System.ArgumentNullException(nameof(roomUrl));
             this.SessionId = sessionId ?? throw new global::System.ArgumentNullException(nameof(sessionId));
+            this.Warnings = warnings;
         }
 
         /// <summary>

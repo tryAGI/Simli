@@ -16,6 +16,10 @@ namespace Simli
         ///
         /// </summary>
         Elevenlabs,
+        /// <summary>
+        ///
+        /// </summary>
+        Inworld,
     }
 
     /// <summary>
@@ -32,6 +36,7 @@ namespace Simli
             {
                 AgentUpdateVoiceProvider.Cartesia => "cartesia",
                 AgentUpdateVoiceProvider.Elevenlabs => "elevenlabs",
+                AgentUpdateVoiceProvider.Inworld => "inworld",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -44,6 +49,7 @@ namespace Simli
             {
                 "cartesia" => AgentUpdateVoiceProvider.Cartesia,
                 "elevenlabs" => AgentUpdateVoiceProvider.Elevenlabs,
+                "inworld" => AgentUpdateVoiceProvider.Inworld,
                 _ => null,
             };
         }

@@ -52,6 +52,12 @@ namespace Simli
         public string? FirstMessage { get; set; }
 
         /// <summary>
+        /// An animation the avatar plays as it opens the session, when the user joins (with firstMessage, if there is one). Trinity-2 faces only; the others ignore it. Leave it out for no animation.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("introAnimation")]
+        public global::Simli.AnimationId? IntroAnimation { get; set; }
+
+        /// <summary>
         /// Default Value: 3600
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("maxSessionLength")]
@@ -76,7 +82,7 @@ namespace Simli
         public global::Simli.CustomLLMConfig? CustomLLMConfig { get; set; }
 
         /// <summary>
-        /// Default Value: {"model":"gpt-4o-mini","provider":"OpenAI"}
+        /// Default Value: {"model":"gpt-6-luna","provider":"OpenAI"}
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("llmConfig")]
         public global::Simli.LLMConfig? LlmConfig { get; set; }
@@ -88,11 +94,52 @@ namespace Simli
         public bool? CreateTranscript { get; set; }
 
         /// <summary>
-        /// Default Value: artalk
+        /// Default Value: fasttalk
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Simli.JsonConverters.SimliModelsJsonConverter))]
         public global::Simli.SimliModels? Model { get; set; }
+
+        /// <summary>
+        /// Turns off the face restoration pass on legacy faces.<br/>
+        /// Default Value: false
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("disableSuperRes")]
+        public bool? DisableSuperRes { get; set; }
+
+        /// <summary>
+        /// Width of the streamed video in pixels, Trinity-2 faces only (the others keep their own frame size). At least 512, and with streaming_height one of 1:1, 16:9 or 9:16, otherwise a 422. A canvas larger than the avatar's frame is padded with its background; a smaller one crops a window out of it.<br/>
+        /// Default Value: 768
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("streaming_width")]
+        public int? StreamingWidth { get; set; }
+
+        /// <summary>
+        /// Height of the streamed video in pixels. See streaming_width.<br/>
+        /// Default Value: 768
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("streaming_height")]
+        public int? StreamingHeight { get; set; }
+
+        /// <summary>
+        /// Where the avatar sits across the canvas, from 0 (left) to 1 (right). Trinity-2 only.<br/>
+        /// Default Value: 0.5
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("avatar_position_x")]
+        public double? AvatarPositionX { get; set; }
+
+        /// <summary>
+        /// Where the avatar sits down the canvas, from 0 (top) to 1 (bottom). Trinity-2 only.<br/>
+        /// Default Value: 1.0
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("avatar_position_y")]
+        public double? AvatarPositionY { get; set; }
+
+        /// <summary>
+        /// The camera the session starts with, on top of the avatar's own framing. Trinity-2 only. Leave it out to keep the avatar's framing. A streaming session can move it afterwards with CAM_ messages.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("camera")]
+        public global::Simli.CameraSetting? Camera { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -120,6 +167,9 @@ namespace Simli
         /// Default Value: You are Chatbot, a friendly, helpful robot. Your goal is to demonstrate your capabilities in a succinct way. Your output will be converted to audio so don't include special characters in your answers. Respond to what the user said in a creative and helpful way, but keep your responses brief.
         /// </param>
         /// <param name="firstMessage"></param>
+        /// <param name="introAnimation">
+        /// An animation the avatar plays as it opens the session, when the user joins (with firstMessage, if there is one). Trinity-2 faces only; the others ignore it. Leave it out for no animation.
+        /// </param>
         /// <param name="maxSessionLength">
         /// Default Value: 3600
         /// </param>
@@ -131,13 +181,36 @@ namespace Simli
         /// </param>
         /// <param name="customLLMConfig"></param>
         /// <param name="llmConfig">
-        /// Default Value: {"model":"gpt-4o-mini","provider":"OpenAI"}
+        /// Default Value: {"model":"gpt-6-luna","provider":"OpenAI"}
         /// </param>
         /// <param name="createTranscript">
         /// Default Value: false
         /// </param>
         /// <param name="model">
-        /// Default Value: artalk
+        /// Default Value: fasttalk
+        /// </param>
+        /// <param name="disableSuperRes">
+        /// Turns off the face restoration pass on legacy faces.<br/>
+        /// Default Value: false
+        /// </param>
+        /// <param name="streamingWidth">
+        /// Width of the streamed video in pixels, Trinity-2 faces only (the others keep their own frame size). At least 512, and with streaming_height one of 1:1, 16:9 or 9:16, otherwise a 422. A canvas larger than the avatar's frame is padded with its background; a smaller one crops a window out of it.<br/>
+        /// Default Value: 768
+        /// </param>
+        /// <param name="streamingHeight">
+        /// Height of the streamed video in pixels. See streaming_width.<br/>
+        /// Default Value: 768
+        /// </param>
+        /// <param name="avatarPositionX">
+        /// Where the avatar sits across the canvas, from 0 (left) to 1 (right). Trinity-2 only.<br/>
+        /// Default Value: 0.5
+        /// </param>
+        /// <param name="avatarPositionY">
+        /// Where the avatar sits down the canvas, from 0 (top) to 1 (bottom). Trinity-2 only.<br/>
+        /// Default Value: 1.0
+        /// </param>
+        /// <param name="camera">
+        /// The camera the session starts with, on top of the avatar's own framing. Trinity-2 only. Leave it out to keep the avatar's framing. A streaming session can move it afterwards with CAM_ messages.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -150,13 +223,20 @@ namespace Simli
             string? voiceId,
             string? systemPrompt,
             string? firstMessage,
+            global::Simli.AnimationId? introAnimation,
             int? maxSessionLength,
             int? maxIdleTime,
             string? language,
             global::Simli.CustomLLMConfig? customLLMConfig,
             global::Simli.LLMConfig? llmConfig,
             bool? createTranscript,
-            global::Simli.SimliModels? model)
+            global::Simli.SimliModels? model,
+            bool? disableSuperRes,
+            int? streamingWidth,
+            int? streamingHeight,
+            double? avatarPositionX,
+            double? avatarPositionY,
+            global::Simli.CameraSetting? camera)
         {
             this.FaceId = faceId;
             this.TtsProvider = ttsProvider;
@@ -165,6 +245,7 @@ namespace Simli
             this.VoiceId = voiceId;
             this.SystemPrompt = systemPrompt;
             this.FirstMessage = firstMessage;
+            this.IntroAnimation = introAnimation;
             this.MaxSessionLength = maxSessionLength;
             this.MaxIdleTime = maxIdleTime;
             this.Language = language;
@@ -172,6 +253,12 @@ namespace Simli
             this.LlmConfig = llmConfig;
             this.CreateTranscript = createTranscript;
             this.Model = model;
+            this.DisableSuperRes = disableSuperRes;
+            this.StreamingWidth = streamingWidth;
+            this.StreamingHeight = streamingHeight;
+            this.AvatarPositionX = avatarPositionX;
+            this.AvatarPositionY = avatarPositionY;
+            this.Camera = camera;
         }
 
         /// <summary>

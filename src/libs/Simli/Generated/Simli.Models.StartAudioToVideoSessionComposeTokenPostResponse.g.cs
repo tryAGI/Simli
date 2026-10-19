@@ -15,6 +15,12 @@ namespace Simli
         public string? SessionToken { get; set; }
 
         /// <summary>
+        /// Starting camera fields outside their supported range, and region overrides. The token is minted regardless.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("warnings")]
+        public global::System.Collections.Generic.IList<string>? Warnings { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -24,13 +30,18 @@ namespace Simli
         /// Initializes a new instance of the <see cref="StartAudioToVideoSessionComposeTokenPostResponse" /> class.
         /// </summary>
         /// <param name="sessionToken"></param>
+        /// <param name="warnings">
+        /// Starting camera fields outside their supported range, and region overrides. The token is minted regardless.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public StartAudioToVideoSessionComposeTokenPostResponse(
-            string? sessionToken)
+            string? sessionToken,
+            global::System.Collections.Generic.IList<string>? warnings)
         {
             this.SessionToken = sessionToken;
+            this.Warnings = warnings;
         }
 
         /// <summary>
