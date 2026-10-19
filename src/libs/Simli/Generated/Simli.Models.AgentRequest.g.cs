@@ -43,10 +43,10 @@ namespace Simli
         public global::Simli.AgentRequestVoiceProvider? VoiceProvider { get; set; }
 
         /// <summary>
-        ///
+        /// The voice's ID at the voice provider (Inworld voices go by name, such as Sarah)
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("voice_id")]
-        public global::System.Guid? VoiceId { get; set; }
+        public string? VoiceId { get; set; }
 
         /// <summary>
         /// Example: sonic-english
@@ -74,9 +74,9 @@ namespace Simli
         public global::System.Guid? Emotion { get; set; }
 
         /// <summary>
-        /// Example: gpt-4o-mini
+        /// Example: gpt-6-luna
         /// </summary>
-        /// <example>gpt-4o-mini</example>
+        /// <example>gpt-6-luna</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("llm_model")]
         public string? LlmModel { get; set; }
 
@@ -135,7 +135,9 @@ namespace Simli
         /// <param name="firstMessage"></param>
         /// <param name="prompt"></param>
         /// <param name="voiceProvider"></param>
-        /// <param name="voiceId"></param>
+        /// <param name="voiceId">
+        /// The voice's ID at the voice provider (Inworld voices go by name, such as Sarah)
+        /// </param>
         /// <param name="voiceModel">
         /// Example: sonic-english
         /// </param>
@@ -145,7 +147,7 @@ namespace Simli
         /// <param name="language"></param>
         /// <param name="emotion"></param>
         /// <param name="llmModel">
-        /// Example: gpt-4o-mini
+        /// Example: gpt-6-luna
         /// </param>
         /// <param name="llmEndpoint">
         /// The URL of the custom LLM to use<br/>
@@ -175,7 +177,7 @@ namespace Simli
             string? firstMessage,
             string? prompt,
             global::Simli.AgentRequestVoiceProvider? voiceProvider,
-            global::System.Guid? voiceId,
+            string? voiceId,
             string? voiceModel,
             string? ownerId,
             string? language,

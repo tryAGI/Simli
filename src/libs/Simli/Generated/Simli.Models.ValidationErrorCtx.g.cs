@@ -6,7 +6,7 @@ namespace Simli
     /// <summary>
     ///
     /// </summary>
-    public sealed partial class GetRequestStatusFacesGsStatusGetResponse
+    public sealed partial class ValidationErrorCtx
     {
 
         /// <summary>

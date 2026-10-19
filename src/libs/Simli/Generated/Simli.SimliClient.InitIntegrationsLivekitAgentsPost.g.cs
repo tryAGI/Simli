@@ -27,10 +27,12 @@ namespace Simli
             };
         partial void PrepareInitIntegrationsLivekitAgentsPostArguments(
             global::System.Net.Http.HttpClient httpClient,
+            ref string? sessionToken,
             global::Simli.LiveKitInitializationRequest request);
         partial void PrepareInitIntegrationsLivekitAgentsPostRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
+            string? sessionToken,
             global::Simli.LiveKitInitializationRequest request);
         partial void ProcessInitIntegrationsLivekitAgentsPostResponse(
             global::System.Net.Http.HttpClient httpClient,
@@ -44,6 +46,7 @@ namespace Simli
         /// <summary>
         /// Start Livekit Agents Session
         /// </summary>
+        /// <param name="sessionToken"></param>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
@@ -51,12 +54,14 @@ namespace Simli
         public async global::System.Threading.Tasks.Task<global::Simli.InitIntegrationsLivekitAgentsPostResponse> InitIntegrationsLivekitAgentsPostAsync(
 
             global::Simli.LiveKitInitializationRequest request,
+            string? sessionToken = default,
             global::Simli.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __response = await InitIntegrationsLivekitAgentsPostAsResponseAsync(
 
                 request: request,
+                sessionToken: sessionToken,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
             ).ConfigureAwait(false);
@@ -66,6 +71,7 @@ namespace Simli
         /// <summary>
         /// Start Livekit Agents Session
         /// </summary>
+        /// <param name="sessionToken"></param>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
@@ -73,6 +79,7 @@ namespace Simli
         public async global::System.Threading.Tasks.Task<global::Simli.AutoSDKHttpResponse<global::Simli.InitIntegrationsLivekitAgentsPostResponse>> InitIntegrationsLivekitAgentsPostAsResponseAsync(
 
             global::Simli.LiveKitInitializationRequest request,
+            string? sessionToken = default,
             global::Simli.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -82,6 +89,7 @@ namespace Simli
                 client: HttpClient);
             PrepareInitIntegrationsLivekitAgentsPostArguments(
                 httpClient: HttpClient,
+                sessionToken: ref sessionToken,
                 request: request);
 
 
@@ -110,6 +118,9 @@ namespace Simli
                             var __pathBuilder = new global::Simli.PathBuilder(
                                 path: "/integrations/livekit/agents",
                                 baseUri: HttpClient.BaseAddress);
+                            __pathBuilder
+                                .AddOptionalParameter("session_token", sessionToken)
+                                ;
                             var __path = __pathBuilder.ToString();
                 __path = global::Simli.AutoSDKRequestOptionsSupport.AppendQueryParameters(
                     path: __path,
@@ -156,6 +167,7 @@ namespace Simli
                 PrepareInitIntegrationsLivekitAgentsPostRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
+                    sessionToken: sessionToken,
                     request: request);
 
                 return __httpRequest;
@@ -509,26 +521,29 @@ namespace Simli
         /// Start Livekit Agents Session
         /// </summary>
         /// <param name="sessionToken"></param>
+        /// <param name="requestSessionToken"></param>
         /// <param name="livekitToken"></param>
         /// <param name="livekitUrl"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::Simli.InitIntegrationsLivekitAgentsPostResponse> InitIntegrationsLivekitAgentsPostAsync(
-            string sessionToken,
+            string requestSessionToken,
             string livekitToken,
             string livekitUrl,
+            string? sessionToken = default,
             global::Simli.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __request = new global::Simli.LiveKitInitializationRequest
             {
-                SessionToken = sessionToken,
+                SessionToken = requestSessionToken,
                 LivekitToken = livekitToken,
                 LivekitUrl = livekitUrl,
             };
 
             return await InitIntegrationsLivekitAgentsPostAsync(
+                sessionToken: sessionToken,
                 request: __request,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken).ConfigureAwait(false);

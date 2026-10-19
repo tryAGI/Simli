@@ -8,12 +8,48 @@ namespace Simli
     /// </summary>
     public sealed partial class CreatePipecatSessionTokenAutoTokenPostResponse
     {
+        /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("session_token")]
+        public string? SessionToken { get; set; }
+
+        /// <summary>
+        /// Starting camera fields outside their supported range. The token is minted regardless.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("warnings")]
+        public global::System.Collections.Generic.IList<string>? Warnings { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CreatePipecatSessionTokenAutoTokenPostResponse" /> class.
+        /// </summary>
+        /// <param name="sessionToken"></param>
+        /// <param name="warnings">
+        /// Starting camera fields outside their supported range. The token is minted regardless.
+        /// </param>
+#if NET7_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
+        public CreatePipecatSessionTokenAutoTokenPostResponse(
+            string? sessionToken,
+            global::System.Collections.Generic.IList<string>? warnings)
+        {
+            this.SessionToken = sessionToken;
+            this.Warnings = warnings;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CreatePipecatSessionTokenAutoTokenPostResponse" /> class.
+        /// </summary>
+        public CreatePipecatSessionTokenAutoTokenPostResponse()
+        {
+        }
 
     }
 }

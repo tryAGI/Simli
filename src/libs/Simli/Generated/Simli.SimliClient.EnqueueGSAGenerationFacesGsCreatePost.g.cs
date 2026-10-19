@@ -27,12 +27,14 @@ namespace Simli
             };
         partial void PrepareEnqueueGSAGenerationFacesGsCreatePostArguments(
             global::System.Net.Http.HttpClient httpClient,
+            ref float? targetRatio,
             ref global::Simli.TrinityVersion? gsVersion,
             ref string? faceName,
             global::Simli.BodyEnqueueGSAGenerationFacesGsCreatePost request);
         partial void PrepareEnqueueGSAGenerationFacesGsCreatePostRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
+            float? targetRatio,
             global::Simli.TrinityVersion? gsVersion,
             string? faceName,
             global::Simli.BodyEnqueueGSAGenerationFacesGsCreatePost request);
@@ -48,6 +50,7 @@ namespace Simli
         /// <summary>
         /// Generate Trinity Face
         /// </summary>
+        /// <param name="targetRatio"></param>
         /// <param name="gsVersion">
         /// Default Value: GSA_1.0
         /// </param>
@@ -58,9 +61,10 @@ namespace Simli
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Simli.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<string> EnqueueGSAGenerationFacesGsCreatePostAsync(
+        public async global::System.Threading.Tasks.Task<global::Simli.EnqueueGSAGenerationFacesGsCreatePostResponse> EnqueueGSAGenerationFacesGsCreatePostAsync(
 
             global::Simli.BodyEnqueueGSAGenerationFacesGsCreatePost request,
+            float? targetRatio = default,
             global::Simli.TrinityVersion? gsVersion = default,
             string? faceName = default,
             global::Simli.AutoSDKRequestOptions? requestOptions = default,
@@ -69,6 +73,7 @@ namespace Simli
             var __response = await EnqueueGSAGenerationFacesGsCreatePostAsResponseAsync(
 
                 request: request,
+                targetRatio: targetRatio,
                 gsVersion: gsVersion,
                 faceName: faceName,
                 requestOptions: requestOptions,
@@ -80,6 +85,7 @@ namespace Simli
         /// <summary>
         /// Generate Trinity Face
         /// </summary>
+        /// <param name="targetRatio"></param>
         /// <param name="gsVersion">
         /// Default Value: GSA_1.0
         /// </param>
@@ -90,9 +96,10 @@ namespace Simli
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Simli.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Simli.AutoSDKHttpResponse<string>> EnqueueGSAGenerationFacesGsCreatePostAsResponseAsync(
+        public async global::System.Threading.Tasks.Task<global::Simli.AutoSDKHttpResponse<global::Simli.EnqueueGSAGenerationFacesGsCreatePostResponse>> EnqueueGSAGenerationFacesGsCreatePostAsResponseAsync(
 
             global::Simli.BodyEnqueueGSAGenerationFacesGsCreatePost request,
+            float? targetRatio = default,
             global::Simli.TrinityVersion? gsVersion = default,
             string? faceName = default,
             global::Simli.AutoSDKRequestOptions? requestOptions = default,
@@ -104,6 +111,7 @@ namespace Simli
                 client: HttpClient);
             PrepareEnqueueGSAGenerationFacesGsCreatePostArguments(
                 httpClient: HttpClient,
+                targetRatio: ref targetRatio,
                 gsVersion: ref gsVersion,
                 faceName: ref faceName,
                 request: request);
@@ -167,6 +175,12 @@ namespace Simli
                     __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
                 }
             }
+
+            if (targetRatio != default)
+            {
+                __httpRequest.Headers.TryAddWithoutValidation("target-ratio", targetRatio.ToString());
+            }
+
 
                             var __httpRequestContent = new global::System.Net.Http.MultipartFormDataContent();
                             var __contentImage = new global::System.Net.Http.ByteArrayContent(request.Image ?? global::System.Array.Empty<byte>());
@@ -220,6 +234,7 @@ namespace Simli
                 PrepareEnqueueGSAGenerationFacesGsCreatePostRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
+                    targetRatio: targetRatio,
                     gsVersion: gsVersion,
                     faceName: faceName,
                     request: request);
@@ -401,6 +416,38 @@ namespace Simli
                                 retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
+                            //
+                            if ((int)__response.StatusCode == 403)
+                            {
+                                string? __content_403 = null;
+                                global::System.Exception? __exception_403 = null;
+                                try
+                                {
+                                    if (__effectiveReadResponseAsString)
+                                    {
+                                        __content_403 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+                                    }
+                                    else
+                                    {
+                                        __content_403 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+                                    }
+                                }
+                                catch (global::System.Exception __ex)
+                                {
+                                    __exception_403 = __ex;
+                                }
+
+
+                                throw global::Simli.ApiException.Create(
+                                    statusCode: __response.StatusCode,
+                                    message: __content_403 ?? __response.ReasonPhrase ?? string.Empty,
+                                    innerException: __exception_403,
+                                    responseBody: __content_403,
+                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
+                                        __response.Headers,
+                                        h => h.Key,
+                                        h => h.Value));
+                            }
                             // Validation Error
                             if ((int)__response.StatusCode == 422)
                             {
@@ -460,11 +507,13 @@ namespace Simli
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    return new global::Simli.AutoSDKHttpResponse<string>(
+                                    var __value = global::Simli.EnqueueGSAGenerationFacesGsCreatePostResponse.FromJson(__content, JsonSerializerContext) ??
+                                        throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
+                                    return new global::Simli.AutoSDKHttpResponse<global::Simli.EnqueueGSAGenerationFacesGsCreatePostResponse>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Simli.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
-                                        body: __content);
+                                        body: __value);
                                 }
                                 catch (global::System.Exception __ex)
                                 {
@@ -484,17 +533,19 @@ namespace Simli
                                 try
                                 {
                                     __response.EnsureSuccessStatusCode();
-                                    var __content = await __response.Content.ReadAsStringAsync(
+                                    using var __content = await __response.Content.ReadAsStreamAsync(
                 #if NET5_0_OR_GREATER
                                         __effectiveCancellationToken
                 #endif
                                     ).ConfigureAwait(false);
 
-                                    return new global::Simli.AutoSDKHttpResponse<string>(
+                                    var __value = await global::Simli.EnqueueGSAGenerationFacesGsCreatePostResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                        throw new global::System.InvalidOperationException("Response deserialization failed.");
+                                    return new global::Simli.AutoSDKHttpResponse<global::Simli.EnqueueGSAGenerationFacesGsCreatePostResponse>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Simli.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
-                                        body: __content);
+                                        body: __value);
                                 }
                                 catch (global::System.Exception __ex)
                                 {
@@ -533,6 +584,7 @@ namespace Simli
         /// <summary>
         /// Generate Trinity Face
         /// </summary>
+        /// <param name="targetRatio"></param>
         /// <param name="gsVersion">
         /// Default Value: GSA_1.0
         /// </param>
@@ -544,9 +596,10 @@ namespace Simli
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        public async global::System.Threading.Tasks.Task<string> EnqueueGSAGenerationFacesGsCreatePostAsync(
+        public async global::System.Threading.Tasks.Task<global::Simli.EnqueueGSAGenerationFacesGsCreatePostResponse> EnqueueGSAGenerationFacesGsCreatePostAsync(
             byte[] image,
             string imagename,
+            float? targetRatio = default,
             global::Simli.TrinityVersion? gsVersion = default,
             string? faceName = default,
             global::Simli.AutoSDKRequestOptions? requestOptions = default,
@@ -559,6 +612,7 @@ namespace Simli
             };
 
             return await EnqueueGSAGenerationFacesGsCreatePostAsync(
+                targetRatio: targetRatio,
                 gsVersion: gsVersion,
                 faceName: faceName,
                 request: __request,
@@ -569,6 +623,7 @@ namespace Simli
         /// <summary>
         /// Generate Trinity Face
         /// </summary>
+        /// <param name="targetRatio"></param>
         /// <param name="gsVersion">
         /// Default Value: GSA_1.0
         /// </param>
@@ -582,9 +637,10 @@ namespace Simli
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Simli.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<string> EnqueueGSAGenerationFacesGsCreatePostAsync(
+        public async global::System.Threading.Tasks.Task<global::Simli.EnqueueGSAGenerationFacesGsCreatePostResponse> EnqueueGSAGenerationFacesGsCreatePostAsync(
             global::System.IO.Stream image,
             string imagename,
+            float? targetRatio = default,
             global::Simli.TrinityVersion? gsVersion = default,
             string? faceName = default,
             global::Simli.AutoSDKRequestOptions? requestOptions = default,
@@ -601,6 +657,7 @@ namespace Simli
                 client: HttpClient);
             PrepareEnqueueGSAGenerationFacesGsCreatePostArguments(
                 httpClient: HttpClient,
+                targetRatio: ref targetRatio,
                 gsVersion: ref gsVersion,
                 faceName: ref faceName,
                 request: request);
@@ -665,6 +722,12 @@ namespace Simli
                 }
             }
 
+            if (targetRatio != default)
+            {
+                __httpRequest.Headers.TryAddWithoutValidation("target-ratio", targetRatio.ToString());
+            }
+
+
                             var __httpRequestContent = new global::System.Net.Http.MultipartFormDataContent();
                             var __contentImage = new global::System.Net.Http.StreamContent(image);
                             __contentImage.Headers.ContentType = new global::System.Net.Http.Headers.MediaTypeHeaderValue(
@@ -717,6 +780,7 @@ namespace Simli
                 PrepareEnqueueGSAGenerationFacesGsCreatePostRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
+                    targetRatio: targetRatio,
                     gsVersion: gsVersion,
                     faceName: faceName,
                     request: request);
@@ -898,6 +962,38 @@ namespace Simli
                                 retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
+                            //
+                            if ((int)__response.StatusCode == 403)
+                            {
+                                string? __content_403 = null;
+                                global::System.Exception? __exception_403 = null;
+                                try
+                                {
+                                    if (__effectiveReadResponseAsString)
+                                    {
+                                        __content_403 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+                                    }
+                                    else
+                                    {
+                                        __content_403 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+                                    }
+                                }
+                                catch (global::System.Exception __ex)
+                                {
+                                    __exception_403 = __ex;
+                                }
+
+
+                                throw global::Simli.ApiException.Create(
+                                    statusCode: __response.StatusCode,
+                                    message: __content_403 ?? __response.ReasonPhrase ?? string.Empty,
+                                    innerException: __exception_403,
+                                    responseBody: __content_403,
+                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
+                                        __response.Headers,
+                                        h => h.Key,
+                                        h => h.Value));
+                            }
                             // Validation Error
                             if ((int)__response.StatusCode == 422)
                             {
@@ -957,7 +1053,9 @@ namespace Simli
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    return __content;
+                                    return
+                                        global::Simli.EnqueueGSAGenerationFacesGsCreatePostResponse.FromJson(__content, JsonSerializerContext) ??
+                                        throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
                                 }
                                 catch (global::System.Exception __ex)
                                 {
@@ -977,13 +1075,15 @@ namespace Simli
                                 try
                                 {
                                     __response.EnsureSuccessStatusCode();
-                                    var __content = await __response.Content.ReadAsStringAsync(
+                                    using var __content = await __response.Content.ReadAsStreamAsync(
                 #if NET5_0_OR_GREATER
                                         __effectiveCancellationToken
                 #endif
                                     ).ConfigureAwait(false);
 
-                                    return __content;
+                                    return
+                                        await global::Simli.EnqueueGSAGenerationFacesGsCreatePostResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                        throw new global::System.InvalidOperationException("Response deserialization failed.");
                                 }
                                 catch (global::System.Exception __ex)
                                 {
@@ -1022,6 +1122,7 @@ namespace Simli
         /// <summary>
         /// Generate Trinity Face
         /// </summary>
+        /// <param name="targetRatio"></param>
         /// <param name="gsVersion">
         /// Default Value: GSA_1.0
         /// </param>
@@ -1035,9 +1136,10 @@ namespace Simli
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Simli.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Simli.AutoSDKHttpResponse<string>> EnqueueGSAGenerationFacesGsCreatePostAsResponseAsync(
+        public async global::System.Threading.Tasks.Task<global::Simli.AutoSDKHttpResponse<global::Simli.EnqueueGSAGenerationFacesGsCreatePostResponse>> EnqueueGSAGenerationFacesGsCreatePostAsResponseAsync(
             global::System.IO.Stream image,
             string imagename,
+            float? targetRatio = default,
             global::Simli.TrinityVersion? gsVersion = default,
             string? faceName = default,
             global::Simli.AutoSDKRequestOptions? requestOptions = default,
@@ -1054,6 +1156,7 @@ namespace Simli
                 client: HttpClient);
             PrepareEnqueueGSAGenerationFacesGsCreatePostArguments(
                 httpClient: HttpClient,
+                targetRatio: ref targetRatio,
                 gsVersion: ref gsVersion,
                 faceName: ref faceName,
                 request: request);
@@ -1118,6 +1221,12 @@ namespace Simli
                 }
             }
 
+            if (targetRatio != default)
+            {
+                __httpRequest.Headers.TryAddWithoutValidation("target-ratio", targetRatio.ToString());
+            }
+
+
                             var __httpRequestContent = new global::System.Net.Http.MultipartFormDataContent();
                             var __contentImage = new global::System.Net.Http.StreamContent(image);
                             __contentImage.Headers.ContentType = new global::System.Net.Http.Headers.MediaTypeHeaderValue(
@@ -1170,6 +1279,7 @@ namespace Simli
                 PrepareEnqueueGSAGenerationFacesGsCreatePostRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
+                    targetRatio: targetRatio,
                     gsVersion: gsVersion,
                     faceName: faceName,
                     request: request);
@@ -1351,6 +1461,38 @@ namespace Simli
                                 retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
+                            //
+                            if ((int)__response.StatusCode == 403)
+                            {
+                                string? __content_403 = null;
+                                global::System.Exception? __exception_403 = null;
+                                try
+                                {
+                                    if (__effectiveReadResponseAsString)
+                                    {
+                                        __content_403 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+                                    }
+                                    else
+                                    {
+                                        __content_403 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+                                    }
+                                }
+                                catch (global::System.Exception __ex)
+                                {
+                                    __exception_403 = __ex;
+                                }
+
+
+                                throw global::Simli.ApiException.Create(
+                                    statusCode: __response.StatusCode,
+                                    message: __content_403 ?? __response.ReasonPhrase ?? string.Empty,
+                                    innerException: __exception_403,
+                                    responseBody: __content_403,
+                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
+                                        __response.Headers,
+                                        h => h.Key,
+                                        h => h.Value));
+                            }
                             // Validation Error
                             if ((int)__response.StatusCode == 422)
                             {
@@ -1410,11 +1552,13 @@ namespace Simli
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    return new global::Simli.AutoSDKHttpResponse<string>(
+                                    var __value = global::Simli.EnqueueGSAGenerationFacesGsCreatePostResponse.FromJson(__content, JsonSerializerContext) ??
+                                        throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
+                                    return new global::Simli.AutoSDKHttpResponse<global::Simli.EnqueueGSAGenerationFacesGsCreatePostResponse>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Simli.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
-                                        body: __content);
+                                        body: __value);
                                 }
                                 catch (global::System.Exception __ex)
                                 {
@@ -1434,17 +1578,19 @@ namespace Simli
                                 try
                                 {
                                     __response.EnsureSuccessStatusCode();
-                                    var __content = await __response.Content.ReadAsStringAsync(
+                                    using var __content = await __response.Content.ReadAsStreamAsync(
                 #if NET5_0_OR_GREATER
                                         __effectiveCancellationToken
                 #endif
                                     ).ConfigureAwait(false);
 
-                                    return new global::Simli.AutoSDKHttpResponse<string>(
+                                    var __value = await global::Simli.EnqueueGSAGenerationFacesGsCreatePostResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                        throw new global::System.InvalidOperationException("Response deserialization failed.");
+                                    return new global::Simli.AutoSDKHttpResponse<global::Simli.EnqueueGSAGenerationFacesGsCreatePostResponse>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Simli.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
-                                        body: __content);
+                                        body: __value);
                                 }
                                 catch (global::System.Exception __ex)
                                 {

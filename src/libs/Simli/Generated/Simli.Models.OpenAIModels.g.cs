@@ -4,30 +4,22 @@
 namespace Simli
 {
     /// <summary>
-    ///
+    /// gpt-realtime-2.1-mini and gpt-live-1 are speech to speech: they listen and speak themselves, so the TTS settings don't apply. The older gpt-4o and gpt-4.1 models are still accepted for existing integrations.
     /// </summary>
     public enum OpenAIModels
     {
         /// <summary>
         ///
         /// </summary>
-        Gpt41,
+        Gpt6Luna,
         /// <summary>
-        ///
+        /// they listen and speak themselves, so the TTS settings don't apply. The older gpt-4o and gpt-4.1 models are still accepted for existing integrations.
         /// </summary>
-        Gpt41Mini,
+        GptLive1,
         /// <summary>
-        ///
+        /// they listen and speak themselves, so the TTS settings don't apply. The older gpt-4o and gpt-4.1 models are still accepted for existing integrations.
         /// </summary>
-        Gpt41Nano,
-        /// <summary>
-        ///
-        /// </summary>
-        Gpt4o,
-        /// <summary>
-        ///
-        /// </summary>
-        Gpt4oMini,
+        GptRealtime21Mini,
     }
 
     /// <summary>
@@ -42,11 +34,9 @@ namespace Simli
         {
             return value switch
             {
-                OpenAIModels.Gpt41 => "gpt-4.1",
-                OpenAIModels.Gpt41Mini => "gpt-4.1-mini",
-                OpenAIModels.Gpt41Nano => "gpt-4.1-nano",
-                OpenAIModels.Gpt4o => "gpt-4o",
-                OpenAIModels.Gpt4oMini => "gpt-4o-mini",
+                OpenAIModels.Gpt6Luna => "gpt-6-luna",
+                OpenAIModels.GptLive1 => "gpt-live-1",
+                OpenAIModels.GptRealtime21Mini => "gpt-realtime-2.1-mini",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -57,11 +47,9 @@ namespace Simli
         {
             return value switch
             {
-                "gpt-4.1" => OpenAIModels.Gpt41,
-                "gpt-4.1-mini" => OpenAIModels.Gpt41Mini,
-                "gpt-4.1-nano" => OpenAIModels.Gpt41Nano,
-                "gpt-4o" => OpenAIModels.Gpt4o,
-                "gpt-4o-mini" => OpenAIModels.Gpt4oMini,
+                "gpt-6-luna" => OpenAIModels.Gpt6Luna,
+                "gpt-live-1" => OpenAIModels.GptLive1,
+                "gpt-realtime-2.1-mini" => OpenAIModels.GptRealtime21Mini,
                 _ => null,
             };
         }

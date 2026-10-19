@@ -19,7 +19,7 @@ namespace Simli
         /// <summary>
         ///
         /// </summary>
-        PlayHT,
+        Inworld,
         /// <summary>
         ///
         /// </summary>
@@ -40,7 +40,7 @@ namespace Simli
             {
                 TtsProvider.Cartesia => "Cartesia",
                 TtsProvider.ElevenLabs => "ElevenLabs",
-                TtsProvider.PlayHT => "PlayHT",
+                TtsProvider.Inworld => "Inworld",
                 TtsProvider.User => "User",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
@@ -54,7 +54,7 @@ namespace Simli
             {
                 "Cartesia" => TtsProvider.Cartesia,
                 "ElevenLabs" => TtsProvider.ElevenLabs,
-                "PlayHT" => TtsProvider.PlayHT,
+                "Inworld" => TtsProvider.Inworld,
                 "User" => TtsProvider.User,
                 _ => null,
             };

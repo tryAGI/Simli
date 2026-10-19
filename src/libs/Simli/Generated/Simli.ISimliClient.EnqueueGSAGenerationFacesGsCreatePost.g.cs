@@ -7,6 +7,7 @@ namespace Simli
         /// <summary>
         /// Generate Trinity Face
         /// </summary>
+        /// <param name="targetRatio"></param>
         /// <param name="gsVersion">
         /// Default Value: GSA_1.0
         /// </param>
@@ -17,9 +18,10 @@ namespace Simli
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Simli.ApiException"></exception>
-        global::System.Threading.Tasks.Task<string> EnqueueGSAGenerationFacesGsCreatePostAsync(
+        global::System.Threading.Tasks.Task<global::Simli.EnqueueGSAGenerationFacesGsCreatePostResponse> EnqueueGSAGenerationFacesGsCreatePostAsync(
 
             global::Simli.BodyEnqueueGSAGenerationFacesGsCreatePost request,
+            float? targetRatio = default,
             global::Simli.TrinityVersion? gsVersion = default,
             string? faceName = default,
             global::Simli.AutoSDKRequestOptions? requestOptions = default,
@@ -27,6 +29,7 @@ namespace Simli
         /// <summary>
         /// Generate Trinity Face
         /// </summary>
+        /// <param name="targetRatio"></param>
         /// <param name="gsVersion">
         /// Default Value: GSA_1.0
         /// </param>
@@ -37,9 +40,10 @@ namespace Simli
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Simli.ApiException"></exception>
-        global::System.Threading.Tasks.Task<global::Simli.AutoSDKHttpResponse<string>> EnqueueGSAGenerationFacesGsCreatePostAsResponseAsync(
+        global::System.Threading.Tasks.Task<global::Simli.AutoSDKHttpResponse<global::Simli.EnqueueGSAGenerationFacesGsCreatePostResponse>> EnqueueGSAGenerationFacesGsCreatePostAsResponseAsync(
 
             global::Simli.BodyEnqueueGSAGenerationFacesGsCreatePost request,
+            float? targetRatio = default,
             global::Simli.TrinityVersion? gsVersion = default,
             string? faceName = default,
             global::Simli.AutoSDKRequestOptions? requestOptions = default,
@@ -47,6 +51,7 @@ namespace Simli
         /// <summary>
         /// Generate Trinity Face
         /// </summary>
+        /// <param name="targetRatio"></param>
         /// <param name="gsVersion">
         /// Default Value: GSA_1.0
         /// </param>
@@ -58,9 +63,10 @@ namespace Simli
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        global::System.Threading.Tasks.Task<string> EnqueueGSAGenerationFacesGsCreatePostAsync(
+        global::System.Threading.Tasks.Task<global::Simli.EnqueueGSAGenerationFacesGsCreatePostResponse> EnqueueGSAGenerationFacesGsCreatePostAsync(
             byte[] image,
             string imagename,
+            float? targetRatio = default,
             global::Simli.TrinityVersion? gsVersion = default,
             string? faceName = default,
             global::Simli.AutoSDKRequestOptions? requestOptions = default,
@@ -69,6 +75,7 @@ namespace Simli
         /// <summary>
         /// Generate Trinity Face
         /// </summary>
+        /// <param name="targetRatio"></param>
         /// <param name="gsVersion">
         /// Default Value: GSA_1.0
         /// </param>
@@ -82,9 +89,10 @@ namespace Simli
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Simli.ApiException"></exception>
-        global::System.Threading.Tasks.Task<string> EnqueueGSAGenerationFacesGsCreatePostAsync(
+        global::System.Threading.Tasks.Task<global::Simli.EnqueueGSAGenerationFacesGsCreatePostResponse> EnqueueGSAGenerationFacesGsCreatePostAsync(
             global::System.IO.Stream image,
             string imagename,
+            float? targetRatio = default,
             global::Simli.TrinityVersion? gsVersion = default,
             string? faceName = default,
             global::Simli.AutoSDKRequestOptions? requestOptions = default,
@@ -92,6 +100,7 @@ namespace Simli
         /// <summary>
         /// Generate Trinity Face
         /// </summary>
+        /// <param name="targetRatio"></param>
         /// <param name="gsVersion">
         /// Default Value: GSA_1.0
         /// </param>
@@ -105,9 +114,10 @@ namespace Simli
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Simli.ApiException"></exception>
-        global::System.Threading.Tasks.Task<global::Simli.AutoSDKHttpResponse<string>> EnqueueGSAGenerationFacesGsCreatePostAsResponseAsync(
+        global::System.Threading.Tasks.Task<global::Simli.AutoSDKHttpResponse<global::Simli.EnqueueGSAGenerationFacesGsCreatePostResponse>> EnqueueGSAGenerationFacesGsCreatePostAsResponseAsync(
             global::System.IO.Stream image,
             string imagename,
+            float? targetRatio = default,
             global::Simli.TrinityVersion? gsVersion = default,
             string? faceName = default,
             global::Simli.AutoSDKRequestOptions? requestOptions = default,

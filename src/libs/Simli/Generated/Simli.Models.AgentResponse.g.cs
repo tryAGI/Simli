@@ -53,11 +53,11 @@ namespace Simli
         public required global::Simli.AgentResponseVoiceProvider VoiceProvider { get; set; }
 
         /// <summary>
-        ///
+        /// The voice's ID at the voice provider (Inworld voices go by name, such as Sarah)
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("voice_id")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Guid VoiceId { get; set; }
+        public required string VoiceId { get; set; }
 
         /// <summary>
         /// Example: sonic-english
@@ -82,9 +82,9 @@ namespace Simli
         public required global::System.Guid Emotion { get; set; }
 
         /// <summary>
-        /// Example: gpt-4o-mini
+        /// Example: gpt-6-luna
         /// </summary>
-        /// <example>gpt-4o-mini</example>
+        /// <example>gpt-6-luna</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("llm_model")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string LlmModel { get; set; }
@@ -168,14 +168,16 @@ namespace Simli
         /// <param name="firstMessage"></param>
         /// <param name="prompt"></param>
         /// <param name="voiceProvider"></param>
-        /// <param name="voiceId"></param>
+        /// <param name="voiceId">
+        /// The voice's ID at the voice provider (Inworld voices go by name, such as Sarah)
+        /// </param>
         /// <param name="voiceModel">
         /// Example: sonic-english
         /// </param>
         /// <param name="language"></param>
         /// <param name="emotion"></param>
         /// <param name="llmModel">
-        /// Example: gpt-4o-mini
+        /// Example: gpt-6-luna
         /// </param>
         /// <param name="llmEndpoint">
         /// The URL of the custom LLM to use<br/>
@@ -213,7 +215,7 @@ namespace Simli
             string firstMessage,
             string prompt,
             global::Simli.AgentResponseVoiceProvider voiceProvider,
-            global::System.Guid voiceId,
+            string voiceId,
             string voiceModel,
             string language,
             global::System.Guid emotion,
@@ -233,7 +235,7 @@ namespace Simli
             this.FirstMessage = firstMessage ?? throw new global::System.ArgumentNullException(nameof(firstMessage));
             this.Prompt = prompt ?? throw new global::System.ArgumentNullException(nameof(prompt));
             this.VoiceProvider = voiceProvider;
-            this.VoiceId = voiceId;
+            this.VoiceId = voiceId ?? throw new global::System.ArgumentNullException(nameof(voiceId));
             this.VoiceModel = voiceModel ?? throw new global::System.ArgumentNullException(nameof(voiceModel));
             this.Language = language ?? throw new global::System.ArgumentNullException(nameof(language));
             this.Emotion = emotion;
