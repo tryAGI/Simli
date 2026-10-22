@@ -4,22 +4,14 @@
 namespace Simli
 {
     /// <summary>
-    ///
+    /// Gemini 2.5 and older are retired: they're still accepted, and run on gemini-3.8-flash.
     /// </summary>
     public enum GoogleModels
     {
         /// <summary>
-        ///
+        /// they're still accepted, and run on gemini-3.8-flash.
         /// </summary>
-        Gemini25Flash,
-        /// <summary>
-        ///
-        /// </summary>
-        Gemini25FlashLitePreview0617,
-        /// <summary>
-        ///
-        /// </summary>
-        Gemini25Pro,
+        Gemini38Flash,
     }
 
     /// <summary>
@@ -34,9 +26,7 @@ namespace Simli
         {
             return value switch
             {
-                GoogleModels.Gemini25Flash => "gemini-2.5-flash",
-                GoogleModels.Gemini25FlashLitePreview0617 => "gemini-2.5-flash-lite-preview-06-17",
-                GoogleModels.Gemini25Pro => "gemini-2.5-pro",
+                GoogleModels.Gemini38Flash => "gemini-3.8-flash",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -47,9 +37,7 @@ namespace Simli
         {
             return value switch
             {
-                "gemini-2.5-flash" => GoogleModels.Gemini25Flash,
-                "gemini-2.5-flash-lite-preview-06-17" => GoogleModels.Gemini25FlashLitePreview0617,
-                "gemini-2.5-pro" => GoogleModels.Gemini25Pro,
+                "gemini-3.8-flash" => GoogleModels.Gemini38Flash,
                 _ => null,
             };
         }

@@ -550,6 +550,12 @@ namespace Simli
         /// <param name="camera">
         /// The camera the session starts with, on top of the avatar's own framing. Trinity-2 only. Leave it out to keep the avatar's framing. A streaming session can move it afterwards with CAM_ messages.
         /// </param>
+        /// <param name="backgroundId">
+        /// One of your uploaded backgrounds, by the id POST /assets/backgrounds returned, to show behind the avatar, cropped to fill the canvas. Trinity-2 only. Leave it out for the avatar's own. An id that is not one of your account's is dropped with a warning, and the session uses the avatar's own. An image is not accepted: upload it first. A streaming session can change it afterwards with BG_ messages.
+        /// </param>
+        /// <param name="foregroundId">
+        /// One of your uploaded foregrounds, by the id POST /assets/foregrounds returned, laid over the avatar through its transparency and cropped to fill the canvas. Trinity-2 only; otherwise as background_id. A streaming session can change it afterwards with FG_ messages.
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
@@ -567,6 +573,8 @@ namespace Simli
             double? avatarPositionX = default,
             double? avatarPositionY = default,
             global::Simli.CameraSetting? camera = default,
+            global::System.Guid? backgroundId = default,
+            global::System.Guid? foregroundId = default,
             global::Simli.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -585,6 +593,8 @@ namespace Simli
                 AvatarPositionX = avatarPositionX,
                 AvatarPositionY = avatarPositionY,
                 Camera = camera,
+                BackgroundId = backgroundId,
+                ForegroundId = foregroundId,
             };
 
             return await StartAudioToVideoSessionComposeTokenPostAsync(

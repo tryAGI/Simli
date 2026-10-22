@@ -80,6 +80,18 @@ namespace Simli
         public global::Simli.CameraSetting? Camera { get; set; }
 
         /// <summary>
+        /// One of your uploaded backgrounds, by the id POST /assets/backgrounds returned, to show behind the avatar, cropped to fill the canvas. Trinity-2 only. Leave it out for the avatar's own. An id that is not one of your account's is dropped with a warning, and the session uses the avatar's own. An image is not accepted: upload it first. The agent's session starts with it: agents store none of their own. Your app can change it in the session by sending the room an app message {"type": "simli-background", "id": "&lt;background id&gt;"}.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("background_id")]
+        public global::System.Guid? BackgroundId { get; set; }
+
+        /// <summary>
+        /// One of your uploaded foregrounds, by the id POST /assets/foregrounds returned, laid over the avatar through its transparency and cropped to fill the canvas. Trinity-2 only; otherwise as background_id. Your app can change it with {"type": "simli-foreground", "id": "&lt;foreground id&gt;"}.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("foreground_id")]
+        public global::System.Guid? ForegroundId { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -119,6 +131,12 @@ namespace Simli
         /// <param name="camera">
         /// The camera the session starts with, on top of the avatar's own framing. Trinity-2 only. Leave it out to keep the avatar's framing. A streaming session can move it afterwards with CAM_ messages.
         /// </param>
+        /// <param name="backgroundId">
+        /// One of your uploaded backgrounds, by the id POST /assets/backgrounds returned, to show behind the avatar, cropped to fill the canvas. Trinity-2 only. Leave it out for the avatar's own. An id that is not one of your account's is dropped with a warning, and the session uses the avatar's own. An image is not accepted: upload it first. The agent's session starts with it: agents store none of their own. Your app can change it in the session by sending the room an app message {"type": "simli-background", "id": "&lt;background id&gt;"}.
+        /// </param>
+        /// <param name="foregroundId">
+        /// One of your uploaded foregrounds, by the id POST /assets/foregrounds returned, laid over the avatar through its transparency and cropped to fill the canvas. Trinity-2 only; otherwise as background_id. Your app can change it with {"type": "simli-foreground", "id": "&lt;foreground id&gt;"}.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -133,7 +151,9 @@ namespace Simli
             int? streamingHeight,
             double? avatarPositionX,
             double? avatarPositionY,
-            global::Simli.CameraSetting? camera)
+            global::Simli.CameraSetting? camera,
+            global::System.Guid? backgroundId,
+            global::System.Guid? foregroundId)
         {
             this.ExpiryStamp = expiryStamp;
             this.SimliAPIKey = simliAPIKey ?? throw new global::System.ArgumentNullException(nameof(simliAPIKey));
@@ -146,6 +166,8 @@ namespace Simli
             this.AvatarPositionX = avatarPositionX;
             this.AvatarPositionY = avatarPositionY;
             this.Camera = camera;
+            this.BackgroundId = backgroundId;
+            this.ForegroundId = foregroundId;
         }
 
         /// <summary>
