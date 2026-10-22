@@ -229,79 +229,107 @@ namespace Simli
         /// <summary>
         ///
         /// </summary>
-        public global::Simli.TrinityGenerationState? Type49 { get; set; }
+        public global::Simli.AssetKind? Type49 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Simli.TrinityGeneration? Type50 { get; set; }
+        public global::Simli.Asset? Type50 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Simli.TrinityGenerationStatus? Type51 { get; set; }
+        public long? Type51 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Simli.TrinityGeneration>? Type52 { get; set; }
+        public global::Simli.ListedAsset? Type52 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Simli.TrinityVersion? Type53 { get; set; }
+        public global::Simli.ListedAssetVariant2? Type53 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public float? Type54 { get; set; }
+        public global::Simli.BodyUploadAssetAssetsKindPost? Type54 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Simli.GetIceServersComposeIceGetResponseItem>? Type55 { get; set; }
+        public global::Simli.TrinityGenerationState? Type55 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Simli.GetIceServersComposeIceGetResponseItem? Type56 { get; set; }
+        public global::Simli.TrinityGeneration? Type56 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Simli.StartAudioToVideoSessionComposeTokenPostResponse? Type57 { get; set; }
+        public global::Simli.TrinityGenerationStatus? Type57 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Simli.StartAudioToVideoSessionComposeTokenPostResponse2? Type58 { get; set; }
+        public global::System.Collections.Generic.IList<global::Simli.TrinityGeneration>? Type58 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Simli.AudioToVideoInterfaceStaticAudioPostResponse? Type59 { get; set; }
+        public global::Simli.TrinityVersion? Type59 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Simli.EnqueueGSAGenerationFacesGsCreatePostResponse? Type60 { get; set; }
+        public float? Type60 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Simli.FacesResponse>? Type61 { get; set; }
+        public global::System.Collections.Generic.IList<global::Simli.GetIceServersComposeIceGetResponseItem>? Type61 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Simli.InitIntegrationsLivekitAgentsPostResponse? Type62 { get; set; }
+        public global::Simli.GetIceServersComposeIceGetResponseItem? Type62 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Simli.GetHistorySessionsResponse? Type63 { get; set; }
+        public global::Simli.StartAudioToVideoSessionComposeTokenPostResponse? Type63 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Simli.HistoryRecord>? Type64 { get; set; }
+        public global::Simli.StartAudioToVideoSessionComposeTokenPostResponse2? Type64 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Simli.GetRatelimiterSessionsResponse? Type65 { get; set; }
+        public global::Simli.AudioToVideoInterfaceStaticAudioPostResponse? Type65 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Simli.AgentResponse>? Type66 { get; set; }
+        public global::Simli.EnqueueGSAGenerationFacesGsCreatePostResponse? Type66 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Simli.CreatePipecatSessionTokenAutoTokenPostResponse? Type67 { get; set; }
+        public global::System.Collections.Generic.IList<global::Simli.FacesResponse>? Type67 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::System.Collections.Generic.IList<global::Simli.ListedAsset>? Type68 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Simli.InitIntegrationsLivekitAgentsPostResponse? Type69 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Simli.GetHistorySessionsResponse? Type70 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::System.Collections.Generic.IList<global::Simli.HistoryRecord>? Type71 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Simli.GetRatelimiterSessionsResponse? Type72 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::System.Collections.Generic.IList<global::Simli.AgentResponse>? Type73 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Simli.CreatePipecatSessionTokenAutoTokenPostResponse? Type74 { get; set; }
 
         /// <summary>
         ///
@@ -330,10 +358,14 @@ namespace Simli
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.List<global::Simli.HistoryRecord>? ListType6 { get; set; }
+        public global::System.Collections.Generic.List<global::Simli.ListedAsset>? ListType6 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.List<global::Simli.AgentResponse>? ListType7 { get; set; }
+        public global::System.Collections.Generic.List<global::Simli.HistoryRecord>? ListType7 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::System.Collections.Generic.List<global::Simli.AgentResponse>? ListType8 { get; set; }
     }
 }

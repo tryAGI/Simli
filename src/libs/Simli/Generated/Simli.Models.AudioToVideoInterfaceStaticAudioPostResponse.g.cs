@@ -23,7 +23,7 @@ namespace Simli
         public string? Mp4Url { get; set; }
 
         /// <summary>
-        /// Camera fields outside their supported range. The video is made with them regardless.
+        /// Camera fields outside their supported range, and background_id / foreground_id dropped as not your account's (the avatar's own is used). The video is made regardless.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("warnings")]
         public global::System.Collections.Generic.IList<string>? Warnings { get; set; }
@@ -44,7 +44,7 @@ namespace Simli
         /// Example: https://api.simli.ai/mp4/path-to-file/output.mp4
         /// </param>
         /// <param name="warnings">
-        /// Camera fields outside their supported range. The video is made with them regardless.
+        /// Camera fields outside their supported range, and background_id / foreground_id dropped as not your account's (the avatar's own is used). The video is made regardless.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

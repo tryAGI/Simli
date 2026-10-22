@@ -67,6 +67,10 @@ namespace Simli
 
             typeof(global::Simli.JsonConverters.CharacterVersionNullableJsonConverter),
 
+            typeof(global::Simli.JsonConverters.AssetKindJsonConverter),
+
+            typeof(global::Simli.JsonConverters.AssetKindNullableJsonConverter),
+
             typeof(global::Simli.JsonConverters.TrinityGenerationStateJsonConverter),
 
             typeof(global::Simli.JsonConverters.TrinityGenerationStateNullableJsonConverter),
@@ -74,6 +78,8 @@ namespace Simli
             typeof(global::Simli.JsonConverters.TrinityVersionJsonConverter),
 
             typeof(global::Simli.JsonConverters.TrinityVersionNullableJsonConverter),
+
+            typeof(global::Simli.JsonConverters.ListedAssetJsonConverter),
 
             typeof(global::Simli.JsonConverters.AnyOfJsonConverter<global::Simli.OpenAIModels?, global::Simli.GoogleModels?, string>),
 
@@ -133,6 +139,12 @@ namespace Simli
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Simli.CharacterVersion), TypeInfoPropertyName = "CharacterVersion2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Simli.BodyEnqueueGSAGenerationFacesGsCreatePost))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Simli.BodyPreprocessImageFacesTrinityPreprocessPost))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Simli.AssetKind), TypeInfoPropertyName = "AssetKind2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Simli.Asset))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(long))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Simli.ListedAsset), TypeInfoPropertyName = "ListedAsset2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Simli.ListedAssetVariant2))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Simli.BodyUploadAssetAssetsKindPost))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Simli.TrinityGenerationState), TypeInfoPropertyName = "TrinityGenerationState2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Simli.TrinityGeneration))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Simli.TrinityGenerationStatus))]
@@ -146,6 +158,7 @@ namespace Simli
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Simli.AudioToVideoInterfaceStaticAudioPostResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Simli.EnqueueGSAGenerationFacesGsCreatePostResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Simli.FacesResponse>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Simli.ListedAsset>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Simli.InitIntegrationsLivekitAgentsPostResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Simli.GetHistorySessionsResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Simli.HistoryRecord>))]
@@ -158,6 +171,7 @@ namespace Simli
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Simli.TrinityGeneration>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Simli.GetIceServersComposeIceGetResponseItem>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Simli.FacesResponse>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Simli.ListedAsset>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Simli.HistoryRecord>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Simli.AgentResponse>))]
     public sealed partial class SourceGenerationContext : global::System.Text.Json.Serialization.JsonSerializerContext

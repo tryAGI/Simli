@@ -15,7 +15,7 @@ namespace Simli
         public string? SessionToken { get; set; }
 
         /// <summary>
-        /// Starting camera fields outside their supported range. The token is minted regardless.
+        /// Starting camera fields outside their supported range, and background_id / foreground_id dropped as not your account's (the avatar's own is used). The token is minted regardless.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("warnings")]
         public global::System.Collections.Generic.IList<string>? Warnings { get; set; }
@@ -31,7 +31,7 @@ namespace Simli
         /// </summary>
         /// <param name="sessionToken"></param>
         /// <param name="warnings">
-        /// Starting camera fields outside their supported range. The token is minted regardless.
+        /// Starting camera fields outside their supported range, and background_id / foreground_id dropped as not your account's (the avatar's own is used). The token is minted regardless.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

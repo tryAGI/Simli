@@ -23,7 +23,7 @@ namespace Simli
         public required string SessionId { get; set; }
 
         /// <summary>
-        /// Deprecations, and starting camera fields outside their supported range. The session starts regardless.
+        /// Deprecations, starting camera fields outside their supported range, and background_id / foreground_id dropped as not your account's (the avatar's own is used). The session starts regardless.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("warnings")]
         public global::System.Collections.Generic.IList<string>? Warnings { get; set; }
@@ -40,7 +40,7 @@ namespace Simli
         /// <param name="roomUrl"></param>
         /// <param name="sessionId"></param>
         /// <param name="warnings">
-        /// Deprecations, and starting camera fields outside their supported range. The session starts regardless.
+        /// Deprecations, starting camera fields outside their supported range, and background_id / foreground_id dropped as not your account's (the avatar's own is used). The session starts regardless.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
