@@ -50,7 +50,7 @@ namespace Simli
         /// Reframes a portrait to the framing its generation expects, and returns the reframed PNG. GSA_1.0: the head centred with equal padding above and below, squared to the camera, on a simplified version of the image's own background. GSA_2.0: the person waist-up, with the torso and both hands, on the image's own background. Either way, the image needs someone facing the camera.
         /// </summary>
         /// <param name="gsVersion">
-        /// Default Value: GSA_1.0
+        /// Default Value: GSA_2.0
         /// </param>
         /// <param name="retry">
         /// Default Value: false
@@ -83,7 +83,7 @@ namespace Simli
         /// Reframes a portrait to the framing its generation expects, and returns the reframed PNG. GSA_1.0: the head centred with equal padding above and below, squared to the camera, on a simplified version of the image's own background. GSA_2.0: the person waist-up, with the torso and both hands, on the image's own background. Either way, the image needs someone facing the camera.
         /// </summary>
         /// <param name="gsVersion">
-        /// Default Value: GSA_1.0
+        /// Default Value: GSA_2.0
         /// </param>
         /// <param name="retry">
         /// Default Value: false
@@ -495,7 +495,7 @@ namespace Simli
         /// Reframes a portrait to the framing its generation expects, and returns the reframed PNG. GSA_1.0: the head centred with equal padding above and below, squared to the camera, on a simplified version of the image's own background. GSA_2.0: the person waist-up, with the torso and both hands, on the image's own background. Either way, the image needs someone facing the camera.
         /// </summary>
         /// <param name="gsVersion">
-        /// Default Value: GSA_1.0
+        /// Default Value: GSA_2.0
         /// </param>
         /// <param name="retry">
         /// Default Value: false
@@ -912,7 +912,7 @@ namespace Simli
         /// Reframes a portrait to the framing its generation expects, and returns the reframed PNG. GSA_1.0: the head centred with equal padding above and below, squared to the camera, on a simplified version of the image's own background. GSA_2.0: the person waist-up, with the torso and both hands, on the image's own background. Either way, the image needs someone facing the camera.
         /// </summary>
         /// <param name="gsVersion">
-        /// Default Value: GSA_1.0
+        /// Default Value: GSA_2.0
         /// </param>
         /// <param name="retry">
         /// Default Value: false
@@ -1357,7 +1357,7 @@ namespace Simli
         /// Reframes a portrait to the framing its generation expects, and returns the reframed PNG. GSA_1.0: the head centred with equal padding above and below, squared to the camera, on a simplified version of the image's own background. GSA_2.0: the person waist-up, with the torso and both hands, on the image's own background. Either way, the image needs someone facing the camera.
         /// </summary>
         /// <param name="gsVersion">
-        /// Default Value: GSA_1.0
+        /// Default Value: GSA_2.0
         /// </param>
         /// <param name="retry">
         /// Default Value: false
@@ -1398,7 +1398,7 @@ namespace Simli
         /// Reframes a portrait to the framing its generation expects, and returns the reframed PNG. GSA_1.0: the head centred with equal padding above and below, squared to the camera, on a simplified version of the image's own background. GSA_2.0: the person waist-up, with the torso and both hands, on the image's own background. Either way, the image needs someone facing the camera.
         /// </summary>
         /// <param name="gsVersion">
-        /// Default Value: GSA_1.0
+        /// Default Value: GSA_2.0
         /// </param>
         /// <param name="retry">
         /// Default Value: false
@@ -1845,7 +1845,7 @@ namespace Simli
         /// Reframes a portrait to the framing its generation expects, and returns the reframed PNG. GSA_1.0: the head centred with equal padding above and below, squared to the camera, on a simplified version of the image's own background. GSA_2.0: the person waist-up, with the torso and both hands, on the image's own background. Either way, the image needs someone facing the camera.
         /// </summary>
         /// <param name="gsVersion">
-        /// Default Value: GSA_1.0
+        /// Default Value: GSA_2.0
         /// </param>
         /// <param name="retry">
         /// Default Value: false
@@ -2267,7 +2267,7 @@ namespace Simli
         /// Reframes a portrait to the framing its generation expects, and returns the reframed PNG. GSA_1.0: the head centred with equal padding above and below, squared to the camera, on a simplified version of the image's own background. GSA_2.0: the person waist-up, with the torso and both hands, on the image's own background. Either way, the image needs someone facing the camera.
         /// </summary>
         /// <param name="gsVersion">
-        /// Default Value: GSA_1.0
+        /// Default Value: GSA_2.0
         /// </param>
         /// <param name="retry">
         /// Default Value: false
@@ -2694,7 +2694,7 @@ namespace Simli
         /// Reframes a portrait to the framing its generation expects, and returns the reframed PNG. GSA_1.0: the head centred with equal padding above and below, squared to the camera, on a simplified version of the image's own background. GSA_2.0: the person waist-up, with the torso and both hands, on the image's own background. Either way, the image needs someone facing the camera.
         /// </summary>
         /// <param name="gsVersion">
-        /// Default Value: GSA_1.0
+        /// Default Value: GSA_2.0
         /// </param>
         /// <param name="retry">
         /// Default Value: false

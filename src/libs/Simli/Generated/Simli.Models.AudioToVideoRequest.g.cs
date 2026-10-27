@@ -49,13 +49,6 @@ namespace Simli
         public int? VideoStartingFrame { get; set; }
 
         /// <summary>
-        /// Turns off the face restoration pass on legacy faces.<br/>
-        /// Default Value: false
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("disableSuperRes")]
-        public bool? DisableSuperRes { get; set; }
-
-        /// <summary>
         /// Width of the video in pixels, Trinity-2 faces only (the others keep their own frame size). At least 512, and with streaming_height one of 1:1, 16:9 or 9:16, otherwise a 422. A canvas larger than the avatar's frame is padded with its background; a smaller one crops a window out of it.<br/>
         /// Default Value: 768
         /// </summary>
@@ -122,10 +115,6 @@ namespace Simli
         /// <param name="videoStartingFrame">
         /// Default Value: 0
         /// </param>
-        /// <param name="disableSuperRes">
-        /// Turns off the face restoration pass on legacy faces.<br/>
-        /// Default Value: false
-        /// </param>
         /// <param name="streamingWidth">
         /// Width of the video in pixels, Trinity-2 faces only (the others keep their own frame size). At least 512, and with streaming_height one of 1:1, 16:9 or 9:16, otherwise a 422. A canvas larger than the avatar's frame is padded with its background; a smaller one crops a window out of it.<br/>
         /// Default Value: 768
@@ -161,7 +150,6 @@ namespace Simli
             int? audioSampleRate,
             int? audioChannelCount,
             int? videoStartingFrame,
-            bool? disableSuperRes,
             int? streamingWidth,
             int? streamingHeight,
             double? avatarPositionX,
@@ -176,7 +164,6 @@ namespace Simli
             this.AudioSampleRate = audioSampleRate;
             this.AudioChannelCount = audioChannelCount;
             this.VideoStartingFrame = videoStartingFrame;
-            this.DisableSuperRes = disableSuperRes;
             this.StreamingWidth = streamingWidth;
             this.StreamingHeight = streamingHeight;
             this.AvatarPositionX = avatarPositionX;

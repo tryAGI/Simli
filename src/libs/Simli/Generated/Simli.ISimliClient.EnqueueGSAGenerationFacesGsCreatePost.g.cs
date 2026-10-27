@@ -9,7 +9,7 @@ namespace Simli
         /// </summary>
         /// <param name="targetRatio"></param>
         /// <param name="gsVersion">
-        /// Default Value: GSA_1.0
+        /// Default Value: GSA_2.0
         /// </param>
         /// <param name="faceName">
         /// Default Value: untitled_avatar
@@ -31,7 +31,7 @@ namespace Simli
         /// </summary>
         /// <param name="targetRatio"></param>
         /// <param name="gsVersion">
-        /// Default Value: GSA_1.0
+        /// Default Value: GSA_2.0
         /// </param>
         /// <param name="faceName">
         /// Default Value: untitled_avatar
@@ -53,7 +53,7 @@ namespace Simli
         /// </summary>
         /// <param name="targetRatio"></param>
         /// <param name="gsVersion">
-        /// Default Value: GSA_1.0
+        /// Default Value: GSA_2.0
         /// </param>
         /// <param name="faceName">
         /// Default Value: untitled_avatar
@@ -77,7 +77,7 @@ namespace Simli
         /// </summary>
         /// <param name="targetRatio"></param>
         /// <param name="gsVersion">
-        /// Default Value: GSA_1.0
+        /// Default Value: GSA_2.0
         /// </param>
         /// <param name="faceName">
         /// Default Value: untitled_avatar
@@ -102,7 +102,7 @@ namespace Simli
         /// </summary>
         /// <param name="targetRatio"></param>
         /// <param name="gsVersion">
-        /// Default Value: GSA_1.0
+        /// Default Value: GSA_2.0
         /// </param>
         /// <param name="faceName">
         /// Default Value: untitled_avatar

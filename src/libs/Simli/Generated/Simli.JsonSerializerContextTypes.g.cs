@@ -106,39 +106,39 @@ namespace Simli
         /// <summary>
         ///
         /// </summary>
-        public bool? Type17 { get; set; }
+        public double? Type17 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public double? Type18 { get; set; }
+        public global::Simli.CameraSetting? Type18 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Simli.CameraSetting? Type19 { get; set; }
+        public object? Type19 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public object? Type20 { get; set; }
+        public global::Simli.ConfigurableSessionRequest? Type20 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Simli.ConfigurableSessionRequest? Type21 { get; set; }
+        public global::Simli.TtsProvider? Type21 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Simli.TtsProvider? Type22 { get; set; }
+        public global::Simli.AnimationId? Type22 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Simli.AnimationId? Type23 { get; set; }
+        public global::Simli.CustomLLMConfig? Type23 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Simli.CustomLLMConfig? Type24 { get; set; }
+        public global::Simli.LLMConfig? Type24 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Simli.LLMConfig? Type25 { get; set; }
+        public bool? Type25 { get; set; }
         /// <summary>
         ///
         /// </summary>
@@ -214,7 +214,7 @@ namespace Simli
         /// <summary>
         ///
         /// </summary>
-        public global::Simli.BodyGenerateFaceIDAPIFacesLegacyCreatePost? Type44 { get; set; }
+        public global::Simli.BodyEnqueueGSAGenerationFacesGsCreatePost? Type44 { get; set; }
         /// <summary>
         ///
         /// </summary>
@@ -222,119 +222,111 @@ namespace Simli
         /// <summary>
         ///
         /// </summary>
-        public global::Simli.CharacterVersion? Type46 { get; set; }
+        public global::Simli.BodyPreprocessImageFacesTrinityPreprocessPost? Type46 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Simli.BodyEnqueueGSAGenerationFacesGsCreatePost? Type47 { get; set; }
+        public global::Simli.AssetKind? Type47 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Simli.BodyPreprocessImageFacesTrinityPreprocessPost? Type48 { get; set; }
+        public global::Simli.Asset? Type48 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Simli.AssetKind? Type49 { get; set; }
+        public long? Type49 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Simli.Asset? Type50 { get; set; }
+        public global::Simli.ListedAsset? Type50 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public long? Type51 { get; set; }
+        public global::Simli.ListedAssetVariant2? Type51 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Simli.ListedAsset? Type52 { get; set; }
+        public global::Simli.BodyUploadAssetAssetsKindPost? Type52 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Simli.ListedAssetVariant2? Type53 { get; set; }
+        public global::Simli.TrinityGenerationState? Type53 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Simli.BodyUploadAssetAssetsKindPost? Type54 { get; set; }
+        public global::Simli.TrinityGeneration? Type54 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Simli.TrinityGenerationState? Type55 { get; set; }
+        public global::Simli.TrinityGenerationStatus? Type55 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Simli.TrinityGeneration? Type56 { get; set; }
+        public global::System.Collections.Generic.IList<global::Simli.TrinityGeneration>? Type56 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Simli.TrinityGenerationStatus? Type57 { get; set; }
+        public global::Simli.TrinityVersion? Type57 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Simli.TrinityGeneration>? Type58 { get; set; }
+        public float? Type58 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Simli.TrinityVersion? Type59 { get; set; }
+        public global::System.Collections.Generic.IList<global::Simli.GetIceServersComposeIceGetResponseItem>? Type59 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public float? Type60 { get; set; }
+        public global::Simli.GetIceServersComposeIceGetResponseItem? Type60 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Simli.GetIceServersComposeIceGetResponseItem>? Type61 { get; set; }
+        public global::Simli.StartAudioToVideoSessionComposeTokenPostResponse? Type61 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Simli.GetIceServersComposeIceGetResponseItem? Type62 { get; set; }
+        public global::Simli.StartAudioToVideoSessionComposeTokenPostResponse2? Type62 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Simli.StartAudioToVideoSessionComposeTokenPostResponse? Type63 { get; set; }
+        public global::Simli.AudioToVideoInterfaceStaticAudioPostResponse? Type63 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Simli.StartAudioToVideoSessionComposeTokenPostResponse2? Type64 { get; set; }
+        public global::Simli.EnqueueGSAGenerationFacesGsCreatePostResponse? Type64 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Simli.AudioToVideoInterfaceStaticAudioPostResponse? Type65 { get; set; }
+        public global::System.Collections.Generic.IList<global::Simli.FacesResponse>? Type65 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Simli.EnqueueGSAGenerationFacesGsCreatePostResponse? Type66 { get; set; }
+        public global::System.Collections.Generic.IList<global::Simli.ListedAsset>? Type66 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Simli.FacesResponse>? Type67 { get; set; }
+        public global::Simli.InitIntegrationsLivekitAgentsPostResponse? Type67 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Simli.ListedAsset>? Type68 { get; set; }
+        public global::Simli.GetHistorySessionsResponse? Type68 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Simli.InitIntegrationsLivekitAgentsPostResponse? Type69 { get; set; }
+        public global::System.Collections.Generic.IList<global::Simli.HistoryRecord>? Type69 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Simli.GetHistorySessionsResponse? Type70 { get; set; }
+        public global::Simli.GetRatelimiterSessionsResponse? Type70 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Simli.HistoryRecord>? Type71 { get; set; }
+        public global::System.Collections.Generic.IList<global::Simli.AgentResponse>? Type71 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Simli.GetRatelimiterSessionsResponse? Type72 { get; set; }
-        /// <summary>
-        ///
-        /// </summary>
-        public global::System.Collections.Generic.IList<global::Simli.AgentResponse>? Type73 { get; set; }
-        /// <summary>
-        ///
-        /// </summary>
-        public global::Simli.CreatePipecatSessionTokenAutoTokenPostResponse? Type74 { get; set; }
+        public global::Simli.CreatePipecatSessionTokenAutoTokenPostResponse? Type72 { get; set; }
 
         /// <summary>
         ///

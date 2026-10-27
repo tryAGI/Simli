@@ -4,16 +4,16 @@
 namespace Simli
 {
     /// <summary>
-    /// The avatar generation: GSA_1.0 makes a Trinity-1 face, GSA_2.0 a Trinity-2 face.
+    /// The avatar generation: GSA_2.0 makes a Trinity-2 face, GSA_1.0 a Trinity-1 face (accounts created before October 26, 2026 only).
     /// </summary>
     public enum TrinityVersion
     {
         /// <summary>
-        /// GSA_1.0 makes a Trinity-1 face, GSA_2.0 a Trinity-2 face.
+        /// GSA_2.0 makes a Trinity-2 face, GSA_1.0 a Trinity-1 face (accounts created before October 26, 2026 only).
         /// </summary>
         Gsa10,
         /// <summary>
-        /// GSA_1.0 makes a Trinity-1 face, GSA_2.0 a Trinity-2 face.
+        /// GSA_2.0 makes a Trinity-2 face, GSA_1.0 a Trinity-1 face (accounts created before October 26, 2026 only).
         /// </summary>
         Gsa20,
     }
