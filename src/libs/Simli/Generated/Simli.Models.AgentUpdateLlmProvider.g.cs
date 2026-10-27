@@ -4,7 +4,7 @@
 namespace Simli
 {
     /// <summary>
-    /// The provider of the LLM used by the agent
+    /// The provider of the LLM used by the agent. Unset, sessions run openai (gpt-6-luna), or google for a gemini llm_model
     /// </summary>
     public enum AgentUpdateLlmProvider
     {

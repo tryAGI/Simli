@@ -49,9 +49,9 @@ namespace Simli
         public string? VoiceId { get; set; }
 
         /// <summary>
-        /// Example: sonic-english
+        /// Example: inworld-tts-2
         /// </summary>
-        /// <example>sonic-english</example>
+        /// <example>inworld-tts-2</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("voice_model")]
         public string? VoiceModel { get; set; }
 
@@ -101,7 +101,7 @@ namespace Simli
         public int? MaxSessionLength { get; set; }
 
         /// <summary>
-        /// The provider of the LLM used by the agent
+        /// The provider of the LLM used by the agent. Unset, sessions run openai (gpt-6-luna), or google for a gemini llm_model
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("llm_provider")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Simli.JsonConverters.AgentRequestLlmProviderJsonConverter))]
@@ -139,7 +139,7 @@ namespace Simli
         /// The voice's ID at the voice provider (Inworld voices go by name, such as Sarah)
         /// </param>
         /// <param name="voiceModel">
-        /// Example: sonic-english
+        /// Example: inworld-tts-2
         /// </param>
         /// <param name="ownerId">
         /// Unique identifier for the owner of the agent
@@ -160,7 +160,7 @@ namespace Simli
         /// Default Value: 3600
         /// </param>
         /// <param name="llmProvider">
-        /// The provider of the LLM used by the agent
+        /// The provider of the LLM used by the agent. Unset, sessions run openai (gpt-6-luna), or google for a gemini llm_model
         /// </param>
         /// <param name="createdAt">
         /// Timestamp when the agent was created

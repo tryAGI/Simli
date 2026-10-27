@@ -46,10 +46,6 @@ namespace Simli
         /// <param name="videoStartingFrame">
         /// Default Value: 0
         /// </param>
-        /// <param name="disableSuperRes">
-        /// Turns off the face restoration pass on legacy faces.<br/>
-        /// Default Value: false
-        /// </param>
         /// <param name="streamingWidth">
         /// Width of the video in pixels, Trinity-2 faces only (the others keep their own frame size). At least 512, and with streaming_height one of 1:1, 16:9 or 9:16, otherwise a 422. A canvas larger than the avatar's frame is padded with its background; a smaller one crops a window out of it.<br/>
         /// Default Value: 768
@@ -85,7 +81,6 @@ namespace Simli
             int? audioSampleRate = default,
             int? audioChannelCount = default,
             int? videoStartingFrame = default,
-            bool? disableSuperRes = default,
             int? streamingWidth = default,
             int? streamingHeight = default,
             double? avatarPositionX = default,

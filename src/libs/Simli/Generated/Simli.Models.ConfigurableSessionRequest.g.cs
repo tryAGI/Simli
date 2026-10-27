@@ -9,13 +9,13 @@ namespace Simli
     public sealed partial class ConfigurableSessionRequest
     {
         /// <summary>
-        /// Default Value: tmp9i8bbq7c
+        /// Default Value: bf13113a-355a-4d97-8b90-4edccd1da7b2
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("faceId")]
         public string? FaceId { get; set; }
 
         /// <summary>
-        /// Default Value: Cartesia
+        /// Default Value: Inworld
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("ttsProvider")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Simli.JsonConverters.TtsProviderJsonConverter))]
@@ -28,13 +28,15 @@ namespace Simli
         public string? TtsAPIKey { get; set; }
 
         /// <summary>
-        /// Default Value: sonic-turbo-2025-03-07
+        /// Defaults to Inworld's model; with ttsProvider Cartesia, to sonic-turbo-2025-03-07.<br/>
+        /// Default Value: inworld-tts-2
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("ttsModel")]
         public string? TtsModel { get; set; }
 
         /// <summary>
-        /// Default Value: a167e0f3-df7e-4d52-a9c3-f949145efdab
+        /// The voice's ID at the voice provider (Inworld voices go by name). Defaults to Inworld's Ashley; with ttsProvider Cartesia, to a167e0f3-df7e-4d52-a9c3-f949145efdab.<br/>
+        /// Default Value: Ashley
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("voiceId")]
         public string? VoiceId { get; set; }
@@ -101,13 +103,6 @@ namespace Simli
         public global::Simli.SimliModels? Model { get; set; }
 
         /// <summary>
-        /// Turns off the face restoration pass on legacy faces.<br/>
-        /// Default Value: false
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("disableSuperRes")]
-        public bool? DisableSuperRes { get; set; }
-
-        /// <summary>
         /// Width of the streamed video in pixels, Trinity-2 faces only (the others keep their own frame size). At least 512, and with streaming_height one of 1:1, 16:9 or 9:16, otherwise a 422. A canvas larger than the avatar's frame is padded with its background; a smaller one crops a window out of it.<br/>
         /// Default Value: 768
         /// </summary>
@@ -163,17 +158,19 @@ namespace Simli
         /// Initializes a new instance of the <see cref="ConfigurableSessionRequest" /> class.
         /// </summary>
         /// <param name="faceId">
-        /// Default Value: tmp9i8bbq7c
+        /// Default Value: bf13113a-355a-4d97-8b90-4edccd1da7b2
         /// </param>
         /// <param name="ttsProvider">
-        /// Default Value: Cartesia
+        /// Default Value: Inworld
         /// </param>
         /// <param name="ttsAPIKey"></param>
         /// <param name="ttsModel">
-        /// Default Value: sonic-turbo-2025-03-07
+        /// Defaults to Inworld's model; with ttsProvider Cartesia, to sonic-turbo-2025-03-07.<br/>
+        /// Default Value: inworld-tts-2
         /// </param>
         /// <param name="voiceId">
-        /// Default Value: a167e0f3-df7e-4d52-a9c3-f949145efdab
+        /// The voice's ID at the voice provider (Inworld voices go by name). Defaults to Inworld's Ashley; with ttsProvider Cartesia, to a167e0f3-df7e-4d52-a9c3-f949145efdab.<br/>
+        /// Default Value: Ashley
         /// </param>
         /// <param name="systemPrompt">
         /// Default Value: You are Chatbot, a friendly, helpful robot. Your goal is to demonstrate your capabilities in a succinct way. Your output will be converted to audio so don't include special characters in your answers. Respond to what the user said in a creative and helpful way, but keep your responses brief.
@@ -200,10 +197,6 @@ namespace Simli
         /// </param>
         /// <param name="model">
         /// Default Value: fasttalk
-        /// </param>
-        /// <param name="disableSuperRes">
-        /// Turns off the face restoration pass on legacy faces.<br/>
-        /// Default Value: false
         /// </param>
         /// <param name="streamingWidth">
         /// Width of the streamed video in pixels, Trinity-2 faces only (the others keep their own frame size). At least 512, and with streaming_height one of 1:1, 16:9 or 9:16, otherwise a 422. A canvas larger than the avatar's frame is padded with its background; a smaller one crops a window out of it.<br/>
@@ -249,7 +242,6 @@ namespace Simli
             global::Simli.LLMConfig? llmConfig,
             bool? createTranscript,
             global::Simli.SimliModels? model,
-            bool? disableSuperRes,
             int? streamingWidth,
             int? streamingHeight,
             double? avatarPositionX,
@@ -273,7 +265,6 @@ namespace Simli
             this.LlmConfig = llmConfig;
             this.CreateTranscript = createTranscript;
             this.Model = model;
-            this.DisableSuperRes = disableSuperRes;
             this.StreamingWidth = streamingWidth;
             this.StreamingHeight = streamingHeight;
             this.AvatarPositionX = avatarPositionX;

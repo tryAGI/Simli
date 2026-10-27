@@ -63,10 +63,6 @@ namespace Simli
 
             typeof(global::Simli.JsonConverters.TtsProviderNullableJsonConverter),
 
-            typeof(global::Simli.JsonConverters.CharacterVersionJsonConverter),
-
-            typeof(global::Simli.JsonConverters.CharacterVersionNullableJsonConverter),
-
             typeof(global::Simli.JsonConverters.AssetKindJsonConverter),
 
             typeof(global::Simli.JsonConverters.AssetKindNullableJsonConverter),
@@ -108,7 +104,6 @@ namespace Simli
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Simli.AgentUpdateLlmProvider), TypeInfoPropertyName = "AgentUpdateLlmProvider2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Simli.AudioToVideoRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Simli.AudioToVideoRequestAudioFormat), TypeInfoPropertyName = "AudioToVideoRequestAudioFormat2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(bool))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(double))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Simli.CameraSetting))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(object))]
@@ -117,6 +112,7 @@ namespace Simli
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Simli.AnimationId), TypeInfoPropertyName = "AnimationId2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Simli.CustomLLMConfig))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Simli.LLMConfig))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(bool))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Simli.SimliModels), TypeInfoPropertyName = "SimliModels2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Simli.GoogleModels), TypeInfoPropertyName = "GoogleModels2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Simli.HTTPValidationError))]
@@ -135,10 +131,8 @@ namespace Simli
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Simli.HistoryRecord))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.DateTimeOffset))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Simli.Error))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Simli.BodyGenerateFaceIDAPIFacesLegacyCreatePost))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(byte[]))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Simli.CharacterVersion), TypeInfoPropertyName = "CharacterVersion2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Simli.BodyEnqueueGSAGenerationFacesGsCreatePost))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(byte[]))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Simli.BodyPreprocessImageFacesTrinityPreprocessPost))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Simli.AssetKind), TypeInfoPropertyName = "AssetKind2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Simli.Asset))]

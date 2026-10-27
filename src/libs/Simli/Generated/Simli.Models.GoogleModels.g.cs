@@ -4,7 +4,7 @@
 namespace Simli
 {
     /// <summary>
-    /// Gemini 2.5 and older are retired: they're still accepted, and run on gemini-3.8-flash.
+    /// gemini-3.8-live is speech to speech over Google's Live API. Gemini 2.5 and older are retired: they're still accepted, and run on gemini-3.8-flash.
     /// </summary>
     public enum GoogleModels
     {
@@ -12,6 +12,10 @@ namespace Simli
         /// they're still accepted, and run on gemini-3.8-flash.
         /// </summary>
         Gemini38Flash,
+        /// <summary>
+        /// they're still accepted, and run on gemini-3.8-flash.
+        /// </summary>
+        Gemini38Live,
     }
 
     /// <summary>
@@ -27,6 +31,7 @@ namespace Simli
             return value switch
             {
                 GoogleModels.Gemini38Flash => "gemini-3.8-flash",
+                GoogleModels.Gemini38Live => "gemini-3.8-live",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -38,6 +43,7 @@ namespace Simli
             return value switch
             {
                 "gemini-3.8-flash" => GoogleModels.Gemini38Flash,
+                "gemini-3.8-live" => GoogleModels.Gemini38Live,
                 _ => null,
             };
         }
