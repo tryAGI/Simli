@@ -1,0 +1,15 @@
+{
+  "Examples": [
+    {
+      "Order": 1,
+      "Title": "Check that a face can be used",
+      "Slug": "check-that-a-face-can-be-used",
+      "Description": "A face can be used by the account that created it, and, when it is public, by any account that has its face ID. Public faces are not discoverable: no endpoint lists or searches other accounts\u0027 faces, so another account can use a public face only if it has been given the ID.",
+      "Language": "http",
+      "Code": "### Check that a face can be used\nGET {{host}}/face/{{id}}\nx-simli-api-key: {{api_key}}\nAccept: application/json\n\n## Responses\n# 200\n# Description: The face is yours or public\n# Content-Type: application/json\n# 400\n# Description: Invalid input\n# 401\n# Description: Unauthorized\n# 403\n# Description: The face is neither yours nor public\n# Content-Type: application/json\n# 404\n# Description: No such face\n# Content-Type: application/json",
+      "Format": "http",
+      "OperationId": "getFaceById",
+      "Setup": null
+    }
+  ]
+}

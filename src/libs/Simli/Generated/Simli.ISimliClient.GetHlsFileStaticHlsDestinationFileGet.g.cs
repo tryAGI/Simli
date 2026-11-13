@@ -13,7 +13,7 @@ namespace Simli
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Simli.ApiException"></exception>
-        global::System.Threading.Tasks.Task<byte[]> GetCachedVideoStaticHlsMachineIPFileGetAsync(
+        global::System.Threading.Tasks.Task<byte[]> GetHlsFileStaticHlsDestinationFileGetAsync(
             string destination,
             string file,
             global::Simli.AutoSDKRequestOptions? requestOptions = default,
@@ -27,7 +27,7 @@ namespace Simli
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Simli.ApiException"></exception>
-        global::System.Threading.Tasks.Task<global::System.IO.Stream> GetCachedVideoStaticHlsMachineIPFileGetAsStreamAsync(
+        global::System.Threading.Tasks.Task<global::System.IO.Stream> GetHlsFileStaticHlsDestinationFileGetAsStreamAsync(
             string destination,
             string file,
             global::Simli.AutoSDKRequestOptions? requestOptions = default,
@@ -42,7 +42,7 @@ namespace Simli
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Simli.ApiException"></exception>
-        global::System.Threading.Tasks.Task<global::Simli.AutoSDKHttpResponse<global::System.IO.Stream>> GetCachedVideoStaticHlsMachineIPFileGetAsStreamAsResponseAsync(
+        global::System.Threading.Tasks.Task<global::Simli.AutoSDKHttpResponse<global::System.IO.Stream>> GetHlsFileStaticHlsDestinationFileGetAsStreamAsResponseAsync(
             string destination,
             string file,
             global::Simli.AutoSDKRequestOptions? requestOptions = default,
@@ -56,7 +56,7 @@ namespace Simli
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Simli.ApiException"></exception>
-        global::System.Threading.Tasks.Task<global::Simli.AutoSDKHttpResponse<byte[]>> GetCachedVideoStaticHlsMachineIPFileGetAsResponseAsync(
+        global::System.Threading.Tasks.Task<global::Simli.AutoSDKHttpResponse<byte[]>> GetHlsFileStaticHlsDestinationFileGetAsResponseAsync(
             string destination,
             string file,
             global::Simli.AutoSDKRequestOptions? requestOptions = default,

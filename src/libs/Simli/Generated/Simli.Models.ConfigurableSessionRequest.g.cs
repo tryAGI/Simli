@@ -9,7 +9,7 @@ namespace Simli
     public sealed partial class ConfigurableSessionRequest
     {
         /// <summary>
-        /// Default Value: bf13113a-355a-4d97-8b90-4edccd1da7b2
+        /// Default Value: 14c60d62-6ebf-424d-b626-1f4f91c33b04
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("faceId")]
         public string? FaceId { get; set; }
@@ -158,7 +158,7 @@ namespace Simli
         /// Initializes a new instance of the <see cref="ConfigurableSessionRequest" /> class.
         /// </summary>
         /// <param name="faceId">
-        /// Default Value: bf13113a-355a-4d97-8b90-4edccd1da7b2
+        /// Default Value: 14c60d62-6ebf-424d-b626-1f4f91c33b04
         /// </param>
         /// <param name="ttsProvider">
         /// Default Value: Inworld

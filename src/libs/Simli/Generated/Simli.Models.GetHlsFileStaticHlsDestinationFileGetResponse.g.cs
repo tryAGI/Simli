@@ -6,7 +6,7 @@ namespace Simli
     /// <summary>
     ///
     /// </summary>
-    public sealed partial class GetCachedVideoMp4StaticMp4MachineIPFileGetResponse
+    public sealed partial class GetHlsFileStaticHlsDestinationFileGetResponse
     {
 
         /// <summary>

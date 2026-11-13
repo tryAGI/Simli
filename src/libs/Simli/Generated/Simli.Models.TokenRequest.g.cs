@@ -4,22 +4,22 @@
 namespace Simli
 {
     /// <summary>
-    ///
+    /// What a Simli Auto session token seals. Either the session's own `request`, for the websocket start, or what a saved agent's session starts with: the keys, the framing (agents store none of their own) and the transcript flag, the agent named at the start.
     /// </summary>
     public sealed partial class TokenRequest
     {
         /// <summary>
+        /// When the token stops starting sessions, in Unix seconds; -1 for never. Set it for a short-lived token.<br/>
         /// Default Value: -1
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("expiryStamp")]
         public int? ExpiryStamp { get; set; }
 
         /// <summary>
-        ///
+        /// The API key the session runs on. Leave it out for the x-simli-api-key header's.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("simliAPIKey")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string SimliAPIKey { get; set; }
+        public string? SimliAPIKey { get; set; }
 
         /// <summary>
         ///
@@ -40,10 +40,17 @@ namespace Simli
         public bool? CreateTranscript { get; set; }
 
         /// <summary>
+        /// The pages that may start sessions with the token, by host, checked against the request's Origin. Leave it out for any.<br/>
         /// Default Value: []
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("originAllowList")]
         public global::System.Collections.Generic.IList<string>? OriginAllowList { get; set; }
+
+        /// <summary>
+        /// The session the token starts on the websocket, as POST /auto/start/configurable takes it, carried exactly as set. A start with it names no agent, and the request's own keys and framing apply, not the token's.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("request")]
+        public global::Simli.ConfigurableSessionRequest? Request { get; set; }
 
         /// <summary>
         /// Width of the streamed video in pixels, Trinity-2 faces only (the others keep their own frame size). At least 512, and with streaming_height one of 1:1, 16:9 or 9:16, otherwise a 422. A canvas larger than the avatar's frame is padded with its background; a smaller one crops a window out of it.<br/>
@@ -100,9 +107,12 @@ namespace Simli
         /// <summary>
         /// Initializes a new instance of the <see cref="TokenRequest" /> class.
         /// </summary>
-        /// <param name="simliAPIKey"></param>
         /// <param name="expiryStamp">
+        /// When the token stops starting sessions, in Unix seconds; -1 for never. Set it for a short-lived token.<br/>
         /// Default Value: -1
+        /// </param>
+        /// <param name="simliAPIKey">
+        /// The API key the session runs on. Leave it out for the x-simli-api-key header's.
         /// </param>
         /// <param name="llmAPIKey"></param>
         /// <param name="ttsAPIKey"></param>
@@ -110,7 +120,11 @@ namespace Simli
         /// Default Value: false
         /// </param>
         /// <param name="originAllowList">
+        /// The pages that may start sessions with the token, by host, checked against the request's Origin. Leave it out for any.<br/>
         /// Default Value: []
+        /// </param>
+        /// <param name="request">
+        /// The session the token starts on the websocket, as POST /auto/start/configurable takes it, carried exactly as set. A start with it names no agent, and the request's own keys and framing apply, not the token's.
         /// </param>
         /// <param name="streamingWidth">
         /// Width of the streamed video in pixels, Trinity-2 faces only (the others keep their own frame size). At least 512, and with streaming_height one of 1:1, 16:9 or 9:16, otherwise a 422. A canvas larger than the avatar's frame is padded with its background; a smaller one crops a window out of it.<br/>
@@ -141,12 +155,13 @@ namespace Simli
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public TokenRequest(
-            string simliAPIKey,
             int? expiryStamp,
+            string? simliAPIKey,
             string? llmAPIKey,
             string? ttsAPIKey,
             bool? createTranscript,
             global::System.Collections.Generic.IList<string>? originAllowList,
+            global::Simli.ConfigurableSessionRequest? request,
             int? streamingWidth,
             int? streamingHeight,
             double? avatarPositionX,
@@ -156,11 +171,12 @@ namespace Simli
             global::System.Guid? foregroundId)
         {
             this.ExpiryStamp = expiryStamp;
-            this.SimliAPIKey = simliAPIKey ?? throw new global::System.ArgumentNullException(nameof(simliAPIKey));
+            this.SimliAPIKey = simliAPIKey;
             this.LlmAPIKey = llmAPIKey;
             this.TtsAPIKey = ttsAPIKey;
             this.CreateTranscript = createTranscript;
             this.OriginAllowList = originAllowList;
+            this.Request = request;
             this.StreamingWidth = streamingWidth;
             this.StreamingHeight = streamingHeight;
             this.AvatarPositionX = avatarPositionX;

@@ -4,9 +4,9 @@
 namespace Simli
 {
     /// <summary>
-    ///
+    /// Mean time to first byte of each kind of service (stt, llm, tts)
     /// </summary>
-    public sealed partial class GetCachedVideoStaticHlsMachineIPFileGetResponse
+    public sealed partial class SessionMetricsTtfbMs
     {
 
         /// <summary>
