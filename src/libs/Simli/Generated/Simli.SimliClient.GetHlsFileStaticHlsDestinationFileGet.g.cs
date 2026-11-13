@@ -7,7 +7,7 @@ namespace Simli
     {
 
 
-        private static readonly global::Simli.EndPointSecurityRequirement s_GetCachedVideoMp4StaticMp4MachineIPFileGetSecurityRequirement0 =
+        private static readonly global::Simli.EndPointSecurityRequirement s_GetHlsFileStaticHlsDestinationFileGetSecurityRequirement0 =
             new global::Simli.EndPointSecurityRequirement
             {
                 Authorizations = new global::Simli.EndPointAuthorizationRequirement[]
@@ -21,43 +21,44 @@ namespace Simli
                     },
                 },
             };
-        private static readonly global::Simli.EndPointSecurityRequirement[] s_GetCachedVideoMp4StaticMp4MachineIPFileGetSecurityRequirements =
+        private static readonly global::Simli.EndPointSecurityRequirement[] s_GetHlsFileStaticHlsDestinationFileGetSecurityRequirements =
             new global::Simli.EndPointSecurityRequirement[]
-            {                s_GetCachedVideoMp4StaticMp4MachineIPFileGetSecurityRequirement0,
+            {                s_GetHlsFileStaticHlsDestinationFileGetSecurityRequirement0,
             };
-        partial void PrepareGetCachedVideoMp4StaticMp4MachineIPFileGetArguments(
+        partial void PrepareGetHlsFileStaticHlsDestinationFileGetArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string destination,
             ref string file);
-        partial void PrepareGetCachedVideoMp4StaticMp4MachineIPFileGetRequest(
+        partial void PrepareGetHlsFileStaticHlsDestinationFileGetRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string destination,
             string file);
-        partial void ProcessGetCachedVideoMp4StaticMp4MachineIPFileGetResponse(
+        partial void ProcessGetHlsFileStaticHlsDestinationFileGetResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessGetCachedVideoMp4StaticMp4MachineIPFileGetResponseContent(
+        partial void ProcessGetHlsFileStaticHlsDestinationFileGetResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref byte[] content);
 
         /// <summary>
-        /// Get MP4 of Generated Video
+        /// Get HLS Segment<br/>
+        /// Get HLS Stream of Generated Video
         /// </summary>
         /// <param name="destination"></param>
         /// <param name="file"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Simli.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<byte[]> GetCachedVideoMp4StaticMp4MachineIPFileGetAsync(
+        public async global::System.Threading.Tasks.Task<byte[]> GetHlsFileStaticHlsDestinationFileGetAsync(
             string destination,
             string file,
             global::Simli.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __response = await GetCachedVideoMp4StaticMp4MachineIPFileGetAsResponseAsync(
+            var __response = await GetHlsFileStaticHlsDestinationFileGetAsResponseAsync(
                 destination: destination,
                 file: file,
                 requestOptions: requestOptions,
@@ -67,14 +68,15 @@ namespace Simli
             return __response.Body;
         }
         /// <summary>
-        /// Get MP4 of Generated Video
+        /// Get HLS Segment<br/>
+        /// Get HLS Stream of Generated Video
         /// </summary>
         /// <param name="destination"></param>
         /// <param name="file"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Simli.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<global::System.IO.Stream> GetCachedVideoMp4StaticMp4MachineIPFileGetAsStreamAsync(
+        public async global::System.Threading.Tasks.Task<global::System.IO.Stream> GetHlsFileStaticHlsDestinationFileGetAsStreamAsync(
             string destination,
             string file,
             global::Simli.AutoSDKRequestOptions? requestOptions = default,
@@ -82,7 +84,7 @@ namespace Simli
         {
             PrepareArguments(
                 client: HttpClient);
-            PrepareGetCachedVideoMp4StaticMp4MachineIPFileGetArguments(
+            PrepareGetHlsFileStaticHlsDestinationFileGetArguments(
                 httpClient: HttpClient,
                 destination: ref destination,
                 file: ref file);
@@ -90,8 +92,8 @@ namespace Simli
 
             var __authorizations = global::Simli.EndPointSecurityResolver.ResolveAuthorizations(
                 availableAuthorizations: Authorizations,
-                securityRequirements: s_GetCachedVideoMp4StaticMp4MachineIPFileGetSecurityRequirements,
-                operationName: "GetCachedVideoMp4StaticMp4MachineIPFileGetAsync");
+                securityRequirements: s_GetHlsFileStaticHlsDestinationFileGetSecurityRequirements,
+                operationName: "GetHlsFileStaticHlsDestinationFileGetAsync");
 
             using var __timeoutCancellationTokenSource = global::Simli.AutoSDKRequestOptionsSupport.CreateTimeoutCancellationTokenSource(
                 clientOptions: Options,
@@ -111,7 +113,7 @@ namespace Simli
             {
 
                             var __pathBuilder = new global::Simli.PathBuilder(
-                                path: $"/static/mp4/{destination}/{file}",
+                                path: $"/static/hls/{destination}/{file}",
                                 baseUri: HttpClient.BaseAddress);
                             var __path = __pathBuilder.ToString();
                 __path = global::Simli.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -150,7 +152,7 @@ namespace Simli
                 PrepareRequest(
                     client: HttpClient,
                     request: __httpRequest);
-                PrepareGetCachedVideoMp4StaticMp4MachineIPFileGetRequest(
+                PrepareGetHlsFileStaticHlsDestinationFileGetRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
                     destination: destination,
@@ -171,9 +173,9 @@ namespace Simli
                     await global::Simli.AutoSDKRequestOptionsSupport.OnBeforeRequestAsync(
                             clientOptions: Options,
                             context: global::Simli.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "GetCachedVideoMp4StaticMp4MachineIPFileGet",
-                                methodName: "GetCachedVideoMp4StaticMp4MachineIPFileGetAsync",
-                                pathTemplate: "$\"/static/mp4/{destination}/{file}\"",
+                                operationId: "GetHlsFileStaticHlsDestinationFileGet",
+                                methodName: "GetHlsFileStaticHlsDestinationFileGetAsync",
+                                pathTemplate: "$\"/static/hls/{destination}/{file}\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
@@ -205,9 +207,9 @@ namespace Simli
                         await global::Simli.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Simli.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "GetCachedVideoMp4StaticMp4MachineIPFileGet",
-                                methodName: "GetCachedVideoMp4StaticMp4MachineIPFileGetAsync",
-                                pathTemplate: "$\"/static/mp4/{destination}/{file}\"",
+                                operationId: "GetHlsFileStaticHlsDestinationFileGet",
+                                methodName: "GetHlsFileStaticHlsDestinationFileGetAsync",
+                                pathTemplate: "$\"/static/hls/{destination}/{file}\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
@@ -246,9 +248,9 @@ namespace Simli
                         await global::Simli.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Simli.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "GetCachedVideoMp4StaticMp4MachineIPFileGet",
-                                methodName: "GetCachedVideoMp4StaticMp4MachineIPFileGetAsync",
-                                pathTemplate: "$\"/static/mp4/{destination}/{file}\"",
+                                operationId: "GetHlsFileStaticHlsDestinationFileGet",
+                                methodName: "GetHlsFileStaticHlsDestinationFileGetAsync",
+                                pathTemplate: "$\"/static/hls/{destination}/{file}\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
@@ -286,7 +288,7 @@ namespace Simli
                 ProcessResponse(
                     client: HttpClient,
                     response: __response);
-                ProcessGetCachedVideoMp4StaticMp4MachineIPFileGetResponse(
+                ProcessGetHlsFileStaticHlsDestinationFileGetResponse(
                     httpClient: HttpClient,
                     httpResponseMessage: __response);
                 if (__response.IsSuccessStatusCode)
@@ -294,9 +296,9 @@ namespace Simli
                     await global::Simli.AutoSDKRequestOptionsSupport.OnAfterSuccessAsync(
                             clientOptions: Options,
                             context: global::Simli.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "GetCachedVideoMp4StaticMp4MachineIPFileGet",
-                                methodName: "GetCachedVideoMp4StaticMp4MachineIPFileGetAsync",
-                                pathTemplate: "$\"/static/mp4/{destination}/{file}\"",
+                                operationId: "GetHlsFileStaticHlsDestinationFileGet",
+                                methodName: "GetHlsFileStaticHlsDestinationFileGetAsync",
+                                pathTemplate: "$\"/static/hls/{destination}/{file}\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
@@ -316,9 +318,9 @@ namespace Simli
                     await global::Simli.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Simli.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "GetCachedVideoMp4StaticMp4MachineIPFileGet",
-                                methodName: "GetCachedVideoMp4StaticMp4MachineIPFileGetAsync",
-                                pathTemplate: "$\"/static/mp4/{destination}/{file}\"",
+                                operationId: "GetHlsFileStaticHlsDestinationFileGet",
+                                methodName: "GetHlsFileStaticHlsDestinationFileGetAsync",
+                                pathTemplate: "$\"/static/hls/{destination}/{file}\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
@@ -458,7 +460,8 @@ namespace Simli
             }
         }
         /// <summary>
-        /// Get MP4 of Generated Video
+        /// Get HLS Segment<br/>
+        /// Get HLS Stream of Generated Video
         /// </summary>
         /// <param name="destination"></param>
         /// <param name="file"></param>
@@ -466,7 +469,7 @@ namespace Simli
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Simli.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Simli.AutoSDKHttpResponse<global::System.IO.Stream>> GetCachedVideoMp4StaticMp4MachineIPFileGetAsStreamAsResponseAsync(
+        public async global::System.Threading.Tasks.Task<global::Simli.AutoSDKHttpResponse<global::System.IO.Stream>> GetHlsFileStaticHlsDestinationFileGetAsStreamAsResponseAsync(
             string destination,
             string file,
             global::Simli.AutoSDKRequestOptions? requestOptions = default,
@@ -474,7 +477,7 @@ namespace Simli
         {
             PrepareArguments(
                 client: HttpClient);
-            PrepareGetCachedVideoMp4StaticMp4MachineIPFileGetArguments(
+            PrepareGetHlsFileStaticHlsDestinationFileGetArguments(
                 httpClient: HttpClient,
                 destination: ref destination,
                 file: ref file);
@@ -482,8 +485,8 @@ namespace Simli
 
             var __authorizations = global::Simli.EndPointSecurityResolver.ResolveAuthorizations(
                 availableAuthorizations: Authorizations,
-                securityRequirements: s_GetCachedVideoMp4StaticMp4MachineIPFileGetSecurityRequirements,
-                operationName: "GetCachedVideoMp4StaticMp4MachineIPFileGetAsync");
+                securityRequirements: s_GetHlsFileStaticHlsDestinationFileGetSecurityRequirements,
+                operationName: "GetHlsFileStaticHlsDestinationFileGetAsync");
 
             using var __timeoutCancellationTokenSource = global::Simli.AutoSDKRequestOptionsSupport.CreateTimeoutCancellationTokenSource(
                 clientOptions: Options,
@@ -503,7 +506,7 @@ namespace Simli
             {
 
                             var __pathBuilder = new global::Simli.PathBuilder(
-                                path: $"/static/mp4/{destination}/{file}",
+                                path: $"/static/hls/{destination}/{file}",
                                 baseUri: HttpClient.BaseAddress);
                             var __path = __pathBuilder.ToString();
                 __path = global::Simli.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -542,7 +545,7 @@ namespace Simli
                 PrepareRequest(
                     client: HttpClient,
                     request: __httpRequest);
-                PrepareGetCachedVideoMp4StaticMp4MachineIPFileGetRequest(
+                PrepareGetHlsFileStaticHlsDestinationFileGetRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
                     destination: destination,
@@ -563,9 +566,9 @@ namespace Simli
                     await global::Simli.AutoSDKRequestOptionsSupport.OnBeforeRequestAsync(
                             clientOptions: Options,
                             context: global::Simli.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "GetCachedVideoMp4StaticMp4MachineIPFileGet",
-                                methodName: "GetCachedVideoMp4StaticMp4MachineIPFileGetAsync",
-                                pathTemplate: "$\"/static/mp4/{destination}/{file}\"",
+                                operationId: "GetHlsFileStaticHlsDestinationFileGet",
+                                methodName: "GetHlsFileStaticHlsDestinationFileGetAsync",
+                                pathTemplate: "$\"/static/hls/{destination}/{file}\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
@@ -597,9 +600,9 @@ namespace Simli
                         await global::Simli.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Simli.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "GetCachedVideoMp4StaticMp4MachineIPFileGet",
-                                methodName: "GetCachedVideoMp4StaticMp4MachineIPFileGetAsync",
-                                pathTemplate: "$\"/static/mp4/{destination}/{file}\"",
+                                operationId: "GetHlsFileStaticHlsDestinationFileGet",
+                                methodName: "GetHlsFileStaticHlsDestinationFileGetAsync",
+                                pathTemplate: "$\"/static/hls/{destination}/{file}\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
@@ -638,9 +641,9 @@ namespace Simli
                         await global::Simli.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Simli.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "GetCachedVideoMp4StaticMp4MachineIPFileGet",
-                                methodName: "GetCachedVideoMp4StaticMp4MachineIPFileGetAsync",
-                                pathTemplate: "$\"/static/mp4/{destination}/{file}\"",
+                                operationId: "GetHlsFileStaticHlsDestinationFileGet",
+                                methodName: "GetHlsFileStaticHlsDestinationFileGetAsync",
+                                pathTemplate: "$\"/static/hls/{destination}/{file}\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
@@ -678,7 +681,7 @@ namespace Simli
                 ProcessResponse(
                     client: HttpClient,
                     response: __response);
-                ProcessGetCachedVideoMp4StaticMp4MachineIPFileGetResponse(
+                ProcessGetHlsFileStaticHlsDestinationFileGetResponse(
                     httpClient: HttpClient,
                     httpResponseMessage: __response);
                 if (__response.IsSuccessStatusCode)
@@ -686,9 +689,9 @@ namespace Simli
                     await global::Simli.AutoSDKRequestOptionsSupport.OnAfterSuccessAsync(
                             clientOptions: Options,
                             context: global::Simli.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "GetCachedVideoMp4StaticMp4MachineIPFileGet",
-                                methodName: "GetCachedVideoMp4StaticMp4MachineIPFileGetAsync",
-                                pathTemplate: "$\"/static/mp4/{destination}/{file}\"",
+                                operationId: "GetHlsFileStaticHlsDestinationFileGet",
+                                methodName: "GetHlsFileStaticHlsDestinationFileGetAsync",
+                                pathTemplate: "$\"/static/hls/{destination}/{file}\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
@@ -708,9 +711,9 @@ namespace Simli
                     await global::Simli.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Simli.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "GetCachedVideoMp4StaticMp4MachineIPFileGet",
-                                methodName: "GetCachedVideoMp4StaticMp4MachineIPFileGetAsync",
-                                pathTemplate: "$\"/static/mp4/{destination}/{file}\"",
+                                operationId: "GetHlsFileStaticHlsDestinationFileGet",
+                                methodName: "GetHlsFileStaticHlsDestinationFileGetAsync",
+                                pathTemplate: "$\"/static/hls/{destination}/{file}\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
@@ -854,14 +857,15 @@ namespace Simli
             }
         }
         /// <summary>
-        /// Get MP4 of Generated Video
+        /// Get HLS Segment<br/>
+        /// Get HLS Stream of Generated Video
         /// </summary>
         /// <param name="destination"></param>
         /// <param name="file"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Simli.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Simli.AutoSDKHttpResponse<byte[]>> GetCachedVideoMp4StaticMp4MachineIPFileGetAsResponseAsync(
+        public async global::System.Threading.Tasks.Task<global::Simli.AutoSDKHttpResponse<byte[]>> GetHlsFileStaticHlsDestinationFileGetAsResponseAsync(
             string destination,
             string file,
             global::Simli.AutoSDKRequestOptions? requestOptions = default,
@@ -869,7 +873,7 @@ namespace Simli
         {
             PrepareArguments(
                 client: HttpClient);
-            PrepareGetCachedVideoMp4StaticMp4MachineIPFileGetArguments(
+            PrepareGetHlsFileStaticHlsDestinationFileGetArguments(
                 httpClient: HttpClient,
                 destination: ref destination,
                 file: ref file);
@@ -877,8 +881,8 @@ namespace Simli
 
             var __authorizations = global::Simli.EndPointSecurityResolver.ResolveAuthorizations(
                 availableAuthorizations: Authorizations,
-                securityRequirements: s_GetCachedVideoMp4StaticMp4MachineIPFileGetSecurityRequirements,
-                operationName: "GetCachedVideoMp4StaticMp4MachineIPFileGetAsync");
+                securityRequirements: s_GetHlsFileStaticHlsDestinationFileGetSecurityRequirements,
+                operationName: "GetHlsFileStaticHlsDestinationFileGetAsync");
 
             using var __timeoutCancellationTokenSource = global::Simli.AutoSDKRequestOptionsSupport.CreateTimeoutCancellationTokenSource(
                 clientOptions: Options,
@@ -898,7 +902,7 @@ namespace Simli
             {
 
                             var __pathBuilder = new global::Simli.PathBuilder(
-                                path: $"/static/mp4/{destination}/{file}",
+                                path: $"/static/hls/{destination}/{file}",
                                 baseUri: HttpClient.BaseAddress);
                             var __path = __pathBuilder.ToString();
                 __path = global::Simli.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -937,7 +941,7 @@ namespace Simli
                 PrepareRequest(
                     client: HttpClient,
                     request: __httpRequest);
-                PrepareGetCachedVideoMp4StaticMp4MachineIPFileGetRequest(
+                PrepareGetHlsFileStaticHlsDestinationFileGetRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
                     destination: destination,
@@ -958,9 +962,9 @@ namespace Simli
                     await global::Simli.AutoSDKRequestOptionsSupport.OnBeforeRequestAsync(
                             clientOptions: Options,
                             context: global::Simli.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "GetCachedVideoMp4StaticMp4MachineIPFileGet",
-                                methodName: "GetCachedVideoMp4StaticMp4MachineIPFileGetAsync",
-                                pathTemplate: "$\"/static/mp4/{destination}/{file}\"",
+                                operationId: "GetHlsFileStaticHlsDestinationFileGet",
+                                methodName: "GetHlsFileStaticHlsDestinationFileGetAsync",
+                                pathTemplate: "$\"/static/hls/{destination}/{file}\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
@@ -992,9 +996,9 @@ namespace Simli
                         await global::Simli.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Simli.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "GetCachedVideoMp4StaticMp4MachineIPFileGet",
-                                methodName: "GetCachedVideoMp4StaticMp4MachineIPFileGetAsync",
-                                pathTemplate: "$\"/static/mp4/{destination}/{file}\"",
+                                operationId: "GetHlsFileStaticHlsDestinationFileGet",
+                                methodName: "GetHlsFileStaticHlsDestinationFileGetAsync",
+                                pathTemplate: "$\"/static/hls/{destination}/{file}\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
@@ -1033,9 +1037,9 @@ namespace Simli
                         await global::Simli.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Simli.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "GetCachedVideoMp4StaticMp4MachineIPFileGet",
-                                methodName: "GetCachedVideoMp4StaticMp4MachineIPFileGetAsync",
-                                pathTemplate: "$\"/static/mp4/{destination}/{file}\"",
+                                operationId: "GetHlsFileStaticHlsDestinationFileGet",
+                                methodName: "GetHlsFileStaticHlsDestinationFileGetAsync",
+                                pathTemplate: "$\"/static/hls/{destination}/{file}\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
@@ -1073,7 +1077,7 @@ namespace Simli
                 ProcessResponse(
                     client: HttpClient,
                     response: __response);
-                ProcessGetCachedVideoMp4StaticMp4MachineIPFileGetResponse(
+                ProcessGetHlsFileStaticHlsDestinationFileGetResponse(
                     httpClient: HttpClient,
                     httpResponseMessage: __response);
                 if (__response.IsSuccessStatusCode)
@@ -1081,9 +1085,9 @@ namespace Simli
                     await global::Simli.AutoSDKRequestOptionsSupport.OnAfterSuccessAsync(
                             clientOptions: Options,
                             context: global::Simli.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "GetCachedVideoMp4StaticMp4MachineIPFileGet",
-                                methodName: "GetCachedVideoMp4StaticMp4MachineIPFileGetAsync",
-                                pathTemplate: "$\"/static/mp4/{destination}/{file}\"",
+                                operationId: "GetHlsFileStaticHlsDestinationFileGet",
+                                methodName: "GetHlsFileStaticHlsDestinationFileGetAsync",
+                                pathTemplate: "$\"/static/hls/{destination}/{file}\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
@@ -1103,9 +1107,9 @@ namespace Simli
                     await global::Simli.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Simli.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "GetCachedVideoMp4StaticMp4MachineIPFileGet",
-                                methodName: "GetCachedVideoMp4StaticMp4MachineIPFileGetAsync",
-                                pathTemplate: "$\"/static/mp4/{destination}/{file}\"",
+                                operationId: "GetHlsFileStaticHlsDestinationFileGet",
+                                methodName: "GetHlsFileStaticHlsDestinationFileGetAsync",
+                                pathTemplate: "$\"/static/hls/{destination}/{file}\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
@@ -1198,7 +1202,7 @@ namespace Simli
                 #endif
                                 ).ConfigureAwait(false);
 
-                                ProcessGetCachedVideoMp4StaticMp4MachineIPFileGetResponseContent(
+                                ProcessGetHlsFileStaticHlsDestinationFileGetResponseContent(
                                     httpClient: HttpClient,
                                     httpResponseMessage: __response,
                                     content: ref __content);

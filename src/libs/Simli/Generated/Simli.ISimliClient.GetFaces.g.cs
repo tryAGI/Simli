@@ -5,7 +5,8 @@ namespace Simli
     public partial interface ISimliClient
     {
         /// <summary>
-        /// Get all faces
+        /// Get all faces<br/>
+        /// Your own faces only. Other accounts' faces are never listed, public or not.
         /// </summary>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
@@ -14,7 +15,8 @@ namespace Simli
             global::Simli.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Get all faces
+        /// Get all faces<br/>
+        /// Your own faces only. Other accounts' faces are never listed, public or not.
         /// </summary>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>

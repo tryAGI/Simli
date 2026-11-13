@@ -43,7 +43,7 @@ namespace Simli
 
         /// <summary>
         /// Generate Static Video<br/>
-        /// Generate and stream a static video file from a given audio sample
+        /// Generate and stream a static video file from a given audio sample. The whole request body may be at most 5 MB, and the audio at most 30 minutes long. The video is private: the returned URLs are signed (they carry an access token valid for 6 hours) and its files are served on a signed URL only. POST /static/audio/sign issues fresh ones.
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -66,7 +66,7 @@ namespace Simli
         }
         /// <summary>
         /// Generate Static Video<br/>
-        /// Generate and stream a static video file from a given audio sample
+        /// Generate and stream a static video file from a given audio sample. The whole request body may be at most 5 MB, and the audio at most 30 minutes long. The video is private: the returned URLs are signed (they carry an access token valid for 6 hours) and its files are served on a signed URL only. POST /static/audio/sign issues fresh ones.
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -337,7 +337,39 @@ namespace Simli
                                 retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
-                            // Validation Error
+                            //
+                            if ((int)__response.StatusCode == 413)
+                            {
+                                string? __content_413 = null;
+                                global::System.Exception? __exception_413 = null;
+                                try
+                                {
+                                    if (__effectiveReadResponseAsString)
+                                    {
+                                        __content_413 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+                                    }
+                                    else
+                                    {
+                                        __content_413 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+                                    }
+                                }
+                                catch (global::System.Exception __ex)
+                                {
+                                    __exception_413 = __ex;
+                                }
+
+
+                                throw global::Simli.ApiException.Create(
+                                    statusCode: __response.StatusCode,
+                                    message: __content_413 ?? __response.ReasonPhrase ?? string.Empty,
+                                    innerException: __exception_413,
+                                    responseBody: __content_413,
+                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
+                                        __response.Headers,
+                                        h => h.Key,
+                                        h => h.Value));
+                            }
+                            // Validation Error, or audio longer than 30 minutes
                             if ((int)__response.StatusCode == 422)
                             {
                                 string? __content_422 = null;
@@ -472,7 +504,7 @@ namespace Simli
         }
         /// <summary>
         /// Generate Static Video<br/>
-        /// Generate and stream a static video file from a given audio sample
+        /// Generate and stream a static video file from a given audio sample. The whole request body may be at most 5 MB, and the audio at most 30 minutes long. The video is private: the returned URLs are signed (they carry an access token valid for 6 hours) and its files are served on a signed URL only. POST /static/audio/sign issues fresh ones.
         /// </summary>
         /// <param name="faceId"></param>
         /// <param name="audioBase64"></param>

@@ -6,7 +6,7 @@ namespace Simli
     {
         /// <summary>
         /// Generate Static Video<br/>
-        /// Generate and stream a static video file from a given audio sample
+        /// Generate and stream a static video file from a given audio sample. The whole request body may be at most 5 MB, and the audio at most 30 minutes long. The video is private: the returned URLs are signed (they carry an access token valid for 6 hours) and its files are served on a signed URL only. POST /static/audio/sign issues fresh ones.
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -19,7 +19,7 @@ namespace Simli
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Generate Static Video<br/>
-        /// Generate and stream a static video file from a given audio sample
+        /// Generate and stream a static video file from a given audio sample. The whole request body may be at most 5 MB, and the audio at most 30 minutes long. The video is private: the returned URLs are signed (they carry an access token valid for 6 hours) and its files are served on a signed URL only. POST /static/audio/sign issues fresh ones.
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -32,7 +32,7 @@ namespace Simli
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Generate Static Video<br/>
-        /// Generate and stream a static video file from a given audio sample
+        /// Generate and stream a static video file from a given audio sample. The whole request body may be at most 5 MB, and the audio at most 30 minutes long. The video is private: the returned URLs are signed (they carry an access token valid for 6 hours) and its files are served on a signed URL only. POST /static/audio/sign issues fresh ones.
         /// </summary>
         /// <param name="faceId"></param>
         /// <param name="audioBase64"></param>

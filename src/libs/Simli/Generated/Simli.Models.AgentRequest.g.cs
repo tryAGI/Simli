@@ -56,12 +56,6 @@ namespace Simli
         public string? VoiceModel { get; set; }
 
         /// <summary>
-        /// Unique identifier for the owner of the agent
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("owner_id")]
-        public string? OwnerId { get; set; }
-
-        /// <summary>
         ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("language")]
@@ -141,9 +135,6 @@ namespace Simli
         /// <param name="voiceModel">
         /// Example: inworld-tts-2
         /// </param>
-        /// <param name="ownerId">
-        /// Unique identifier for the owner of the agent
-        /// </param>
         /// <param name="language"></param>
         /// <param name="emotion"></param>
         /// <param name="llmModel">
@@ -179,7 +170,6 @@ namespace Simli
             global::Simli.AgentRequestVoiceProvider? voiceProvider,
             string? voiceId,
             string? voiceModel,
-            string? ownerId,
             string? language,
             global::System.Guid? emotion,
             string? llmModel,
@@ -197,7 +187,6 @@ namespace Simli
             this.VoiceProvider = voiceProvider;
             this.VoiceId = voiceId;
             this.VoiceModel = voiceModel;
-            this.OwnerId = ownerId;
             this.Language = language;
             this.Emotion = emotion;
             this.LlmModel = llmModel;
